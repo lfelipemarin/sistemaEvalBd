@@ -11,17 +11,11 @@ package beans;
  */
 public class AreaDeConocimientoDePregunta {
 
-    int codigo;
+    
     int area_conocimiento;
     int pregunta;
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+    
 
     public int getArea_conocimiento() {
         return area_conocimiento;

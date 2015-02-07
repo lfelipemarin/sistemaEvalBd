@@ -17,8 +17,7 @@ public class Cuestionario {
     String nombre;
     int numero_preguntas;
     Date fecha_creacion;
-    int auto;
-    int cuestionario_padre;
+    int autor;
 
     public int getCodigo() {
         return codigo;
@@ -52,20 +51,13 @@ public class Cuestionario {
         this.fecha_creacion = fecha_creacion;
     }
 
-    public int getAuto() {
-        return auto;
+    public int getAutor() {
+        return autor;
     }
 
-    public void setAuto(int auto) {
-        this.auto = auto;
+    public void setAutor(int autor) {
+        this.autor = autor;
     }
-
-    public int getCuestionario_padre() {
-        return cuestionario_padre;
-    }
-
-    public void setCuestionario_padre(int cuestionario_padre) {
-        this.cuestionario_padre = cuestionario_padre;
-    }
+    
     
 }

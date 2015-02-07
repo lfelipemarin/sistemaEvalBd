@@ -15,7 +15,15 @@ public class Respuesta {
     int codigo;
     String texto;
     boolean correcta;
-    int codigo_pregunta;
+    int codigoPregunta;
+
+    public int getCodigoPregunta() {
+        return codigoPregunta;
+    }
+
+    public void setCodigoPregunta(int codigoPregunta) {
+        this.codigoPregunta = codigoPregunta;
+    }
     String imagen;
 
     public int getCodigo() {
@@ -40,14 +48,6 @@ public class Respuesta {
 
     public void setCorrecta(boolean correcta) {
         this.correcta = correcta;
-    }
-
-    public int getCodigo_pregunta() {
-        return codigo_pregunta;
-    }
-
-    public void setCodigo_pregunta(int codigo_pregunta) {
-        this.codigo_pregunta = codigo_pregunta;
     }
 
     public String getImagen() {

@@ -13,6 +13,15 @@ public class GradoDeDificultad {
 
     int codigo;
     String nombre;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    String descripcion;
     
     public int getCodigo() {
         return codigo;

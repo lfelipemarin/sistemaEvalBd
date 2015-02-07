@@ -19,12 +19,11 @@ public class Pregunta {
     int materia;
     boolean habilitado;
     Date fecha_creacion;
-    Date fecha_modificacion;
     int contexto;
     int autor;
-    int grado_dificultad;
+    int gradoDificultad;
     String imagen;
-    int nivel_evaluativo;
+    int nivelEvaluativo;
 
     public int getCodigo() {
         return codigo;
@@ -74,14 +73,6 @@ public class Pregunta {
         this.fecha_creacion = fecha_creacion;
     }
 
-    public Date getFecha_modificacion() {
-        return fecha_modificacion;
-    }
-
-    public void setFecha_modificacion(Date fecha_modificacion) {
-        this.fecha_modificacion = fecha_modificacion;
-    }
-
     public int getContexto() {
         return contexto;
     }
@@ -98,12 +89,12 @@ public class Pregunta {
         this.autor = autor;
     }
 
-    public int getGrado_dificultad() {
-        return grado_dificultad;
+    public int getGradoDificultad() {
+        return gradoDificultad;
     }
 
-    public void setGrado_dificultad(int grado_dificultad) {
-        this.grado_dificultad = grado_dificultad;
+    public void setGradoDificultad(int gradoDificultad) {
+        this.gradoDificultad = gradoDificultad;
     }
 
     public String getImagen() {
@@ -114,12 +105,12 @@ public class Pregunta {
         this.imagen = imagen;
     }
 
-    public int getNivel_evaluativo() {
-        return nivel_evaluativo;
+    public int getNivelEvaluativo() {
+        return nivelEvaluativo;
     }
 
-    public void setNivel_evaluativo(int nivel_evaluativo) {
-        this.nivel_evaluativo = nivel_evaluativo;
+    public void setNivelEvaluativo(int nivelEvaluativo) {
+        this.nivelEvaluativo = nivelEvaluativo;
     }
-    
+
 }

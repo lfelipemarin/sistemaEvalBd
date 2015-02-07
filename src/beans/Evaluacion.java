@@ -16,6 +16,15 @@ public class Evaluacion {
     int estudiante;
     double calificacion;
 
+    public double getValorAprobacion() {
+        return valorAprobacion;
+    }
+
+    public void setValorAprobacion(double valorAprobacion) {
+        this.valorAprobacion = valorAprobacion;
+    }
+    double valorAprobacion;
+
     public int getCodigo() {
         return codigo;
     }

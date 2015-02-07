@@ -13,11 +13,12 @@ import java.sql.Date;
  */
 public class Prueba {
     int codigo;
-    Date fecha_creacion;
+    Date fechaCreacion;
     int cuestionario;
-    Date fecha_aplicacion;
+    Date fechaAplicacion;
     int duracion;
     int grupo;
+    int usuarioProgramador;
 
     public int getCodigo() {
         return codigo;
@@ -27,12 +28,12 @@ public class Prueba {
         this.codigo = codigo;
     }
 
-    public Date getFecha_creacion() {
-        return fecha_creacion;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     public int getCuestionario() {
@@ -43,12 +44,12 @@ public class Prueba {
         this.cuestionario = cuestionario;
     }
 
-    public Date getFecha_aplicacion() {
-        return fecha_aplicacion;
+    public Date getFechaAplicacion() {
+        return fechaAplicacion;
     }
 
-    public void setFecha_aplicacion(Date fecha_aplicacion) {
-        this.fecha_aplicacion = fecha_aplicacion;
+    public void setFechaAplicacion(Date fechaAplicacion) {
+        this.fechaAplicacion = fechaAplicacion;
     }
 
     public int getDuracion() {
@@ -66,5 +67,12 @@ public class Prueba {
     public void setGrupo(int grupo) {
         this.grupo = grupo;
     }
-    
+
+    public int getUsuarioProgramador() {
+        return usuarioProgramador;
+    }
+
+    public void setUsuarioProgramador(int usuarioProgramador) {
+        this.usuarioProgramador = usuarioProgramador;
+    }
 }

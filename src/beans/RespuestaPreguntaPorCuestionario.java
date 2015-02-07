@@ -12,7 +12,7 @@ package beans;
 public class RespuestaPreguntaPorCuestionario {
 
     int codigo;
-    int pregunta_x_cuestionario;
+    int preguntaPorCuestionario;
     int respuesta;
     int indice;
 
@@ -24,12 +24,12 @@ public class RespuestaPreguntaPorCuestionario {
         this.codigo = codigo;
     }
 
-    public int getPregunta_x_cuestionario() {
-        return pregunta_x_cuestionario;
+    public int getPreguntaPorCuestionario() {
+        return preguntaPorCuestionario;
     }
 
-    public void setPregunta_x_cuestionario(int pregunta_x_cuestionario) {
-        this.pregunta_x_cuestionario = pregunta_x_cuestionario;
+    public void setPreguntaPorCuestionario(int preguntaPorCuestionario) {
+        this.preguntaPorCuestionario = preguntaPorCuestionario;
     }
 
     public int getRespuesta() {
@@ -47,4 +47,6 @@ public class RespuestaPreguntaPorCuestionario {
     public void setIndice(int indice) {
         this.indice = indice;
     }
+
+    
 }
