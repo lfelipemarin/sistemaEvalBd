@@ -1,59 +1,48 @@
 package Facade;
-import RecursosTecnicos.daos.*;
+
 import beans.*;
+import java.util.ArrayList;
 
 /**
  * @author FelipeWin
  * @version 1.0
+ * @created 07-feb-2015 03:58:07 p.m.
  */
-public class FacadeInformes {
+public interface FacadeInformes {
 
-	public FacadeInformes(){
+    /**
+     *
+     * @param estudiante
+     * @return 
+     */
+    public ArrayList<Usuario> getEstudiantesAnd(Usuario estudiante);
 
-	}
+    /**
+     *
+     * @param estudiante
+     * @return 
+     */
+    public ArrayList<Usuario> getEstudiantesOr(Usuario estudiante);
 
-	public void finalize() throws Throwable {
+    /**
+     *
+     * @param evaluacion
+     * @return 
+     */
+    public ArrayList<Evaluacion> getEvaluacionesAnd(Evaluacion evaluacion);
 
-	}
+    /**
+     *
+     * @param evaluacion
+     * @return 
+     */
+    public ArrayList<Evaluacion> getEvaluacionesOr(Evaluacion evaluacion);
 
-//	/**
-//	 * 
-//	 * @param estudiante
-//	 */
-//	public <Collection> getEstudiantesAnd(Usuario estudiante){
-//		return null;
-//	}
-//
-//	/**
-//	 * 
-//	 * @param estudiante
-//	 */
-//	public <Collection>Estudiante getEstudiantesOr(Usuario estudiante){
-//		return null;
-//	}
-
-	/**
-	 * 
-	 * @param evaluacion
-	 */
-	public <Collection>Evaluacion getEvaluacionesAnd(Evaluacion evaluacion){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param evaluacion
-	 */
-	public <Collection>Evaluacion getEvaluacionesOr(Evaluacion evaluacion){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param materia
-	 */
-	public <Collection>Evaluacion getEvaluacionesPorMateria(Materia materia){
-		return null;
-	}
+    /**
+     *
+     * @param materia
+     * @return 
+     */
+    public ArrayList<Evaluacion> getEvaluacionesPorMateria(Materia materia);
 
 }
