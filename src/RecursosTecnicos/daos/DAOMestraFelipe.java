@@ -8,8 +8,8 @@ package RecursosTecnicos.daos;
 import RecursosTecnicos.dbUtilConeccionDB.ConexionDb;
 import beans.Usuario;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -19,8 +19,8 @@ import java.sql.SQLException;
 public class DAOMestraFelipe {
 
     public void getUsuario(Usuario u, String param, ConexionDb c) {
-        String sentencia = "SELECT * FROM usuario u WHERE codigo = ? AND "
-                + "nombre = ? AND apellido = ? AND rol = ?";
+        String sentencia = "SELECT * FROM usuario u WHERE codigo = ? OR "
+                + "nombre = ? OR apellido = ? OR rol = ?";
 
         try {
             PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
@@ -31,6 +31,7 @@ public class DAOMestraFelipe {
                 numAtrib++;
             } else {
                 pstm.setString(numAtrib, "%");
+                numAtrib++;
             }
 
             if (u.getNombre() != null && !u.getNombre().equals("")) {
@@ -58,7 +59,14 @@ public class DAOMestraFelipe {
             }
 
             System.out.println("consulta :" + pstm);
-            pstm.execute();
+            ResultSet res = pstm.executeQuery();
+            while (res.next()) {
+                System.out.println("Codigo: " + res.getString("codigo"));
+                System.out.println("Nombre: " + res.getString("nombre"));
+                System.out.println("Apelido: " + res.getString("apellido"));
+                System.out.println("Rol: " + res.getString("rol"));
+                System.out.println("Pass: " + res.getString("passwd"));
+            }
             pstm.close();
 
         } catch (SQLException ex) {
@@ -68,7 +76,8 @@ public class DAOMestraFelipe {
 
     public static void main(String[] args) throws IOException {
         Usuario u = new Usuario();
-        u.setCodigo(2);
+        //u.setCodigo(2);
+        u.setNombre("mauricio");
         DAOMestraFelipe dao = new DAOMestraFelipe();
         ConexionDb con = new ConexionDb();
         dao.getUsuario(u, null, con);
