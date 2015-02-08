@@ -1,77 +1,59 @@
 package Facade;
-import RecursosTecnicos.daos.*;
+
 import beans.*;
+import java.util.ArrayList;
+
 /**
  * @author FelipeWin
  * @version 1.0
  * @created 07-feb-2015 03:58:05 p.m.
  */
-public class FacadeImportacion {
+public interface FacadeImportacion {
 
-	public FacadeImportacion(){
+    /**
+     *
+     * @param grupo
+     */
+    public void guardarGrupo(Grupo grupo);
 
-	}
+    /**
+     *
+     * @param materia
+     */
+    public void guardarMateria(Materia materia);
 
-	public void finalize() throws Throwable {
+    /**
+     *
+     * @param usuario
+     */
+    public void guardarUsuario(Usuario usuario);
 
-	}
+    /**
+     *
+     * @param grupo
+     * @return
+     */
+    public ArrayList<Grupo> listarGruposAnd(Grupo grupo);
 
-	/**
-	 * 
-	 * @param grupo
-	 */
-	public guardarGrupo(Grupo grupo){
+    /**
+     *
+     * @param grupo
+     * @return 
+     */
+    public ArrayList<Grupo> listarGruposOr(Grupo grupo);
 
-	}
+    /**
+     *
+     * @param grupo
+     * @param estudiante
+     */
+    public void registrarEstudianteGrupo (Grupo grupo, Usuario estudiante);
 
-	/**
-	 * 
-	 * @param materia
-	 */
-	public guardarMateria(Materia materia){
-
-	}
-
-	/**
-	 * 
-	 * @param usuario
-	 */
-	public guardarUsuario(Usuario usuario){
-
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 */
-	public <Collection>Grupo listarGruposAnd(Grupo grupo){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 */
-	public <Collection>Grupo listarGruposOr(Grupo grupo){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 * @param estudiante
-	 */
-	public registrarEstudianteGrupo(Grupo grupo, Usuario estudiante){
-
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 * @param profesor
-	 */
-	public registrarProfesorGrupo(Grupo grupo, Usuario profesor){
-
-	}
+    /**
+     *
+     * @param grupo
+     * @param profesor
+     */
+    public void registrarProfesorGrupo (Grupo grupo, Usuario profesor);
 
 }
