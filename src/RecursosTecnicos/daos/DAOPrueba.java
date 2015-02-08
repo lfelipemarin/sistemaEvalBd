@@ -7,7 +7,6 @@ import beans.*;
 /**
  * @author FelipeWin
  * @version 1.0
- * @created 07-feb-2015 03:57:59 p.m.
  */
 public class DAOPrueba {
 
@@ -43,28 +42,28 @@ public class DAOPrueba {
 		return null;
 	}
 
-	/**
-	 * 
-	 * @param cuestionario
-	 */
-	public guardarCuestionario(Cuestionario cuestionario){
-
-	}
-
-	/**
-	 * 
-	 * @param evaluacion
-	 */
-	public guardarEvaluacion(Evaluacion evaluacion){
-
-	}
-
-	/**
-	 * 
-	 * @param prueba
-	 */
-	public guardarPrueba(Prueba prueba){
-
-	}
+//	/**
+//	 * 
+//	 * @param cuestionario
+//	 */
+//	public guardarCuestionario(Cuestionario cuestionario){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param evaluacion
+//	 */
+//	public guardarEvaluacion(Evaluacion evaluacion){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param prueba
+//	 */
+//	public guardarPrueba(Prueba prueba){
+//
+//	}
 
 }

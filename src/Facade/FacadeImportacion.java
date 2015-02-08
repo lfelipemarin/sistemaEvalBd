@@ -4,7 +4,6 @@ import beans.*;
 /**
  * @author FelipeWin
  * @version 1.0
- * @created 07-feb-2015 03:58:05 p.m.
  */
 public class FacadeImportacion {
 
@@ -16,62 +15,62 @@ public class FacadeImportacion {
 
 	}
 
-	/**
-	 * 
-	 * @param grupo
-	 */
-	public guardarGrupo(Grupo grupo){
-
-	}
-
-	/**
-	 * 
-	 * @param materia
-	 */
-	public guardarMateria(Materia materia){
-
-	}
-
-	/**
-	 * 
-	 * @param usuario
-	 */
-	public guardarUsuario(Usuario usuario){
-
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 */
-	public <Collection>Grupo listarGruposAnd(Grupo grupo){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 */
-	public <Collection>Grupo listarGruposOr(Grupo grupo){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 * @param estudiante
-	 */
-	public registrarEstudianteGrupo(Grupo grupo, Usuario estudiante){
-
-	}
-
-	/**
-	 * 
-	 * @param grupo
-	 * @param profesor
-	 */
-	public registrarProfesorGrupo(Grupo grupo, Usuario profesor){
-
-	}
+//	/**
+//	 * 
+//	 * @param grupo
+//	 */
+//	public guardarGrupo(Grupo grupo){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param materia
+//	 */
+//	public guardarMateria(Materia materia){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param usuario
+//	 */
+//	public guardarUsuario(Usuario usuario){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param grupo
+//	 */
+//	public <Collection>Grupo listarGruposAnd(Grupo grupo){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param grupo
+//	 */
+//	public <Collection>Grupo listarGruposOr(Grupo grupo){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param grupo
+//	 * @param estudiante
+//	 */
+//	public registrarEstudianteGrupo(Grupo grupo, Usuario estudiante){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param grupo
+//	 * @param profesor
+//	 */
+//	public registrarProfesorGrupo(Grupo grupo, Usuario profesor){
+//
+//	}
 
 }

@@ -4,7 +4,6 @@ import beans.*;
 /**
  * @author FelipeWin
  * @version 1.0
- * @created 07-feb-2015 03:58:02 p.m.
  */
 public class FacadeBancoPreguntas {
 
@@ -28,26 +27,26 @@ public class FacadeBancoPreguntas {
 	 * 
 	 * @param area
 	 */
-	public guardarAreaDeConocimiento(AreaDeConocimiento area){
-
-	}
+//	public guardarAreaDeConocimiento(AreaDeConocimiento area){
+//
+//	}
 
 	/**
 	 * 
 	 * @param area
 	 * @param pregunta
 	 */
-	public guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta){
+	public void guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta){
 
 	}
 
-	/**
-	 * 
-	 * @param pregunta
-	 */
-	public guardarPregunta(Pregunta pregunta){
-
-	}
+//	/**
+//	 * 
+//	 * @param pregunta
+//	 */
+////	public guardarPregunta(Pregunta pregunta){
+////
+////	}
 
 	public <Collection>Pregunta listarPreguntas(){
 		return null;

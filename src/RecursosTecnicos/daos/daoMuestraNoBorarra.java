@@ -38,16 +38,16 @@ public daoMuestraNoBorarra(){
      
      try {
       
-            PreparedStatement pstm = conn.getConnection().prepareStatement("insert into " + "usuario(codigo, nombre, apellido, rol, passwd) " + " values(?,?,?,?,?)");            
-            
-            pstm.setInt(1, codigo);
-            pstm.setString(2, nombre);
-            pstm.setString(3, apellido);
-            pstm.setInt(4, rol);
-            pstm.setString(5, password);
-            System.out.println("consulta :" + pstm);
-            pstm.execute();
-            pstm.close();            
+        PreparedStatement pstm = conn.getConnection().prepareStatement("insert into " + "usuario(codigo, nombre, apellido, rol, passwd) " + " values(?,?,?,?,?)");            
+
+        pstm.setInt(1, codigo);
+        pstm.setString(2, nombre);
+        pstm.setString(3, apellido);
+        pstm.setInt(4, rol);
+        pstm.setString(5, password);
+        System.out.println("consulta :" + pstm);
+        pstm.execute();
+        pstm.close();            
             System.out.println("error2 :" + pstm);
          }catch(SQLException e){
          System.out.println(e);
@@ -99,6 +99,7 @@ public daoMuestraNoBorarra(){
  
  public void borrarUsuario(ConexionDb conn, int codigo){  
             try {                
+                
                 PreparedStatement pstm = conn.getConnection().prepareStatement("delete from usuario where codigo = ?");            
                 pstm.setInt(1, codigo);                   
                 pstm.execute();
@@ -112,6 +113,7 @@ public daoMuestraNoBorarra(){
  
  public void updateUsuario(ConexionDb conn, Usuario usuario){
        try {            
+           
            String nombre = usuario.getNombre();
            String apellido = usuario.getApellido();
            int rol = usuario.getRol();

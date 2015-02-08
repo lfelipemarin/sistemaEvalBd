@@ -4,7 +4,6 @@ import beans.*;
 /**
  * @author FelipeWin
  * @version 1.0
- * @created 07-feb-2015 03:58:03 p.m.
  */
 public class FacadeCuestionarios {
 
@@ -20,17 +19,17 @@ public class FacadeCuestionarios {
 	 * 
 	 * @param cuestionario
 	 */
-	public guardarCuestionario(Cuestionario cuestionario){
-
-	}
-
-	/**
-	 * 
-	 * @param prueba
-	 */
-	public guardarPrueba(Prueba prueba){
-
-	}
+//	public guardarCuestionario(Cuestionario cuestionario){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param prueba
+//	 */
+//	public guardarPrueba(Prueba prueba){
+//
+//	}
 
 	/**
 	 * 

@@ -5,7 +5,6 @@ import beans.*;
 /**
  * @author FelipeWin
  * @version 1.0
- * @created 07-feb-2015 03:58:07 p.m.
  */
 public class FacadeInformes {
 
@@ -17,21 +16,21 @@ public class FacadeInformes {
 
 	}
 
-	/**
-	 * 
-	 * @param estudiante
-	 */
-	public <Collection> getEstudiantesAnd(Usuario estudiante){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param estudiante
-	 */
-	public <Collection>Estudiante getEstudiantesOr(Usuario estudiante){
-		return null;
-	}
+//	/**
+//	 * 
+//	 * @param estudiante
+//	 */
+//	public <Collection> getEstudiantesAnd(Usuario estudiante){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param estudiante
+//	 */
+//	public <Collection>Estudiante getEstudiantesOr(Usuario estudiante){
+//		return null;
+//	}
 
 	/**
 	 * 

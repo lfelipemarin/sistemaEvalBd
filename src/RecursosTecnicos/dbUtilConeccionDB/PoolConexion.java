@@ -12,29 +12,54 @@ import java.util.Properties;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 /**
+ * Descripcion de PoolConexion
  *
- * @author dx
+ * @author mateo1235
+ * @version 1.0.
  */
 public class PoolConexion {
 
     /**
-     * @param aInstancia the instancia to set
+     * Descripcion de login: usuario de la base de datos
      */
-    private static void setInstancia(PoolConexion aInstancia) {
-        instancia = aInstancia;
-    }
-
     private String login;
+
+    /**
+     * Descripcion de password: password de la base de datos
+     */
     private String password;
+
+    /**
+     * Descripcion de url: direccion de la base de datos
+     */
     private String url;
+
+    /**
+     * Descripcion de basicDataSur: objeto que crea el pool de conexiones
+     */
     private BasicDataSource basicDataSource;
+
+    /**
+     * Descripcion de instancia: instancia de la clase (que es de tipo
+     * singleton)
+     */
     private static PoolConexion instancia;
 
+    /**
+     * Descripcion de PoolConexion() carga los parametros y crear un objeto que
+     * establece la conexion con la base de datos y ofrece un pool de conexiones
+     */
     private PoolConexion() {
         cargarParametros();
         crearPool();
     }
 
+    /** Descripcion de cargarParametros() abre el archivo de parametros y lo
+     * carga su respectivo campo en la clase
+     * @version 1.0
+     * @param [ninguno] ningun parametro
+     * @return ningun retorno 
+     */
     private void cargarParametros() {
 
         Properties prop = new Properties();
@@ -63,17 +88,32 @@ public class PoolConexion {
         getBasicDataSource().setUrl(getUrl());
     }
 
-    public PoolConexion getInstancia() {
+    /** Descripcion de getInstancia() metodo que retorna el la instancia de este
+     * singleton, si esta no existe primero la crea invcando el constructor
+     * privado
+     * @version 1.0
+     * @return Objeto PoolConexion instancia unica de esta clase que contiene el
+     * metodo que entrega objetos de tipo conexion desde un pool de conexiones
+     */
+    public static PoolConexion getInstancia() {
         if (instancia == null) {
             instancia = new PoolConexion();
         }
         return instancia;
     }
 
+    /** Descripcion de getInstancia() metodo que retorna el la instancia de este
+     * singleton, si esta no existe primero la crea invcando el constructor
+     * privado
+     * @version 1.0
+     * @return Objeto PoolConexion instancia unica de esta clase que contiene el
+     * metodo que entrega objetos de tipo conexion desde un pool de conexiones
+     */
     public Connection getConexion() {
         try {
             return getInstancia().getBasicDataSource().getConnection();
         } catch (SQLException ex) {
+            System.out.println(ex);
             return null;
         }
     }

@@ -7,7 +7,6 @@ import beans.*;
 /**
  * @author FelipeWin
  * @version 1.0
- * @created 07-feb-2015 03:57:56 p.m.
  */
 public class DAOPregunta {
 
@@ -27,42 +26,42 @@ public class DAOPregunta {
 		return null;
 	}
 
-	/**
-	 * 
-	 * @param area
-	 */
-	public guardarAreaDeConocimiento(AreaDeConocimiento area){
-
-	}
-
-	/**
-	 * 
-	 * @param area
-	 * @param pregunta
-	 */
-	public guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta){
-
-	}
-
-	/**
-	 * 
-	 * @param pregunta
-	 */
-	public guardarPregunta(Pregunta pregunta){
-
-	}
-
-	public <Collection>Pregunta listarPreguntas(){
-		return null;
-	}
-
-	/**
-	 * 
-	 * @param pregunta
-	 */
-	public <Collection>Pregunta listarPreguntasAnd(Pregunta pregunta){
-		return null;
-	}
+//	/**
+//	 * 
+//	 * @param area
+//	 */
+//	public guardarAreaDeConocimiento(AreaDeConocimiento area){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param area
+//	 * @param pregunta
+//	 */
+//	public guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param pregunta
+//	 */
+//	public guardarPregunta(Pregunta pregunta){
+//
+//	}
+//
+//	public <Collection>Pregunta listarPreguntas(){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param pregunta
+//	 */
+//	public <Collection>Pregunta listarPreguntasAnd(Pregunta pregunta){
+//		return null;
+//	}
 
 	/**
 	 * 

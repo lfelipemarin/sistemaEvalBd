@@ -7,7 +7,6 @@ import beans.*;
 /**
  * @author FelipeWin
  * @version 1.0
- * @created 07-feb-2015 03:57:57 p.m.
  */
 public class DAOUsuario {
 
@@ -47,25 +46,25 @@ public class DAOUsuario {
 	 * 
 	 * @param grupo
 	 */
-	public guardarGrupo(Grupo grupo){
-
-	}
+//	public guardarGrupo(Grupo grupo){
+//
+//	}
 
 	/**
 	 * 
 	 * @param materia
 	 */
-	public guardarMateria(Materia materia){
-
-	}
+//	public guardarMateria(Materia materia){
+//
+//	}
 
 	/**
 	 * 
 	 * @param usuario
 	 */
-	public guardarUsuario(Usuario usuario){
-
-	}
+//	public guardarUsuario(Usuario usuario){
+//
+//	}
 
 	/**
 	 * 
@@ -88,17 +87,17 @@ public class DAOUsuario {
 	 * @param estudiante
 	 * @param grupo
 	 */
-	public registrarEstudianteGrupo(Usuario estudiante, Grupo grupo){
-
-	}
+//	public registrarEstudianteGrupo(Usuario estudiante, Grupo grupo){
+//
+//	}
 
 	/**
 	 * 
 	 * @param profesor
 	 * @param grupo
 	 */
-	public registrarProfesorGrupo(Usuario profesor, Grupo grupo){
-
-	}
+//	public registrarProfesorGrupo(Usuario profesor, Grupo grupo){
+//
+//	}
 
 }
