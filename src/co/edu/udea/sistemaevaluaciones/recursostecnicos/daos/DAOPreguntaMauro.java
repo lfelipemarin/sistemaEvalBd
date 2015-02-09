@@ -5,6 +5,7 @@ import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import java.sql.ResultSet;
 import beans.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 /**
  * @author FelipeWin
@@ -232,11 +233,14 @@ public class DAOPreguntaMauro {
 	 * 
 	 * @param pregunta
 	 */
-	public <Collection>Pregunta listarPreguntasOr(Pregunta p, String param, ConexionDb c){
-		//return null;
-	      String sentencia = "SELECT * FROM pregunta p WHERE fecha_creacion = ? OR "
-                + "tipo = ? OR contexto = ? OR grado_dificultad = ? OR habilitado = ?";
-//En el modulo 1 segun el prototipo tambien pueden buscar por area del conocimiento campo o valor que no esta actualmente en las preguntas
+	public ArrayList<Pregunta> listarPreguntasOr(Pregunta p, String param, ConexionDb c){
+		
+	     String sentencia = "SELECT * FROM pregunta p WHERE fecha_creacion = ? OR "
+             + "tipo = ? OR contexto = ? OR grado_dificultad = ? OR habilitado = ?";
+            //En el modulo 1 segun el prototipo tambien pueden buscar por area del conocimiento 
+            //por lo que se pide un segundo parametro que sea area de conocimiento
+              Pregunta preguntaRetorno;
+              ArrayList<Pregunta> arregloPreguntas = new ArrayList<>();
         try {
             PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
             int numAtrib = 1;
@@ -284,6 +288,16 @@ public class DAOPreguntaMauro {
             System.out.println("consulta :" + pstm);
             ResultSet res = pstm.executeQuery();
             while (res.next()) {
+                preguntaRetorno = new Pregunta();
+                preguntaRetorno.setFecha_creacion(res.getDate("fecha_creacion"));
+                preguntaRetorno.setTipo(res.getInt("tipo"));
+                preguntaRetorno.setContexto(res.getInt("contexto"));
+                preguntaRetorno.setEnunciado(res.getString("enunciado"));
+                preguntaRetorno.setGradoDificultad(res.getInt("grado_dificultad"));
+                preguntaRetorno.setHabilitado(res.getBoolean("habilitado"));
+                
+                arregloPreguntas.add(preguntaRetorno);
+            //Prueba de impresion en consola............
                 System.out.println("fecha de creacion: " + res.getString("fecha_creacion"));
                 System.out.println("Tipo: " + res.getString("tipo"));
                 System.out.println("Contexto: " + res.getString("contexto"));
@@ -296,7 +310,7 @@ public class DAOPreguntaMauro {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-            return null;
+            return arregloPreguntas;
         }
 
     public static void main(String[] args) throws IOException {
