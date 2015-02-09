@@ -7,7 +7,6 @@ package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
 
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import beans.Usuario;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -101,18 +100,4 @@ public class DAOGenericoAND {
             System.out.println(ex);
         }
     }
-
-    public static void main(String[] args) throws IOException {
-        Usuario u = new Usuario();
-//        u.setCodigo(2);
-//        u.setNombre("mauricio");
-        u.setRol(1);
-//        DAOGenericoAND dao = new DAOGenericoAND();
-        DAOUsuario us = new DAOUsuario();
-        ConexionDb con = new ConexionDb();
-        us.getEstudianteAnd(u, null, con);
-//        dao.getUsuario(u, null, con);
-
-    }
-
 }

@@ -5,8 +5,6 @@
  */
 package beans;
 
-import java.sql.Date;
-
 /**
  *
  * @author eaagudelr
@@ -16,8 +14,8 @@ public class Contexto {
     int codigo;
     String enunciado;
     String imagen;
-    Date fecha_creacion;
-    int autor;
+    String fechaCreacion;
+    Usuario autor;
     String titulo;
 
     public int getCodigo() {
@@ -44,19 +42,19 @@ public class Contexto {
         this.imagen = imagen;
     }
 
-    public Date getFecha_creacion() {
-        return fecha_creacion;
+    public String getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
+    public void setFechaCreacion(String fecha_creacion) {
+        this.fechaCreacion = fecha_creacion;
     }
 
-    public int getAutor() {
+    public Usuario getAutor() {
         return autor;
     }
 
-    public void setAutor(int autor) {
+    public void setAutor(Usuario autor) {
         this.autor = autor;
     }
 

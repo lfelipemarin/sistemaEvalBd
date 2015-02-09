@@ -2,7 +2,6 @@ package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
 
 import beans.*;
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,19 +29,15 @@ public class DAOPrueba {
     /**
      *
      * @param e
-     * @return retorna una lista de evaluaciones que cumplan con los atributo de
-     * la evaluacion pasada como parametro
      */
     public void getEvaluacionesOr(Evaluacion e) {
-
-        Connection c = ConexionDb.getInstancia().getConnection();
 
         String sentencia = "SELECT * FROM evaluacion WHERE codigo = ? OR "
                 + "prueba = ? OR estudiante = ? OR calificacion = ?";
 
         try {
 
-            PreparedStatement pstm = c.prepareStatement(sentencia);
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
             int numAtrib = 1;
 
             if (e.getCodigo() != 0) {
@@ -97,7 +92,8 @@ public class DAOPrueba {
 
     /**
      *
-     * @param materia
+     * @param <Collection>
+     * @return
      */
     public <Collection> Evaluacion getEvaluacionesPorMateria(Materia materia) {
         return null;

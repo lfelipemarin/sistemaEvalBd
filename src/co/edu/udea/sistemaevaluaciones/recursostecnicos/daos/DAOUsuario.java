@@ -529,17 +529,7 @@ public class DAOUsuario {
 //        dao.getEstudiantesOr(u, null, con);
 //
 //    }
-    //prueba listar getUsuarioAnd
-    public static void main(String[] args) throws IOException {
-        Usuario u = new Usuario();
-//        u.setCodigo(1);
-//        u.setNombre("edwin");
-        u.setRol(1);
-        DAOUsuario dao = new DAOUsuario();
-        ConexionDb con = new ConexionDb();
-        dao.getEstudianteAnd(u, null, con);
-    }
-     //prueba insertgar grupo
+    //prueba insertgar grupo
 //  public static void main(String[] args) throws IOException {        
 // 
 //        Grupo grupo = new Grupo();
@@ -558,7 +548,6 @@ public class DAOUsuario {
 //        odaousuario.guardarGrupo(conn, grupo);
 //                
 //    }
-
              //prueba insertgar materia
 //  public static void main(String[] args) throws IOException {        
 //        Materia materi = new Materia();

@@ -7,7 +7,6 @@ package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
 
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import beans.Usuario;
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -73,15 +72,5 @@ public class DAOGenericoOR {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-    }
-
-    public static void main(String[] args) throws IOException {
-        Usuario u = new Usuario();
-        //u.setCodigo(2);
-        u.setNombre("mauricio");
-        DAOGenericoOR dao = new DAOGenericoOR();
-        ConexionDb con = new ConexionDb();
-        dao.getUsuario(u, null, con);
-
     }
 }

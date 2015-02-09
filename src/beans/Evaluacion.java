@@ -11,10 +11,13 @@ package beans;
  */
 public class Evaluacion {
 
-    int codigo;
-    int prueba;
-    int estudiante;
-    double calificacion;
+    private int codigo;
+    private Prueba prueba;
+    private Usuario estudiante;
+    private double calificacion;
+    
+    public Evaluacion(){        
+    }
 
     public double getValorAprobacion() {
         return valorAprobacion;
@@ -33,19 +36,19 @@ public class Evaluacion {
         this.codigo = codigo;
     }
 
-    public int getPrueba() {
+    public Prueba getPrueba() {
         return prueba;
     }
 
-    public void setPrueba(int prueba) {
+    public void setPrueba(Prueba prueba) {
         this.prueba = prueba;
     }
 
-    public int getEstudiante() {
+    public Usuario getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(int estudiante) {
+    public void setEstudiante(Usuario estudiante) {
         this.estudiante = estudiante;
     }
 
