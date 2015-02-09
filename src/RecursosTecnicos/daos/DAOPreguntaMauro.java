@@ -71,7 +71,7 @@ public class DAOPreguntaMauro {
 	public <Collection>Pregunta listarPreguntasOr(Pregunta p, String param, ConexionDb c){
 		//return null;
 	      String sentencia = "SELECT * FROM pregunta p WHERE fecha_creacion = ? OR "
-                + "tipo = ? OR contexto = ? OR grado_dificultad = ? OR habilitado = ?";
+                + "tipo = ? OR contexto = ? OR grado_dificultad = ?"; // OR habilitado = ?";
 //En el modulo 1 segun el prototipo tambien pueden buscar por area del conocimiento campo o valor que no esta actualmente en las preguntas
         try {
             PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
@@ -123,6 +123,7 @@ public class DAOPreguntaMauro {
                 System.out.println("fecha de creacion: " + res.getString("fecha_creacion"));
                 System.out.println("Tipo: " + res.getString("tipo"));
                 System.out.println("Contexto: " + res.getString("contexto"));
+                System.out.println("Enunciado: " + res.getString("enunciado"));
                 System.out.println("Grado de Dificultad: " + res.getString("grado_dificultad"));
                 System.out.println("Estado: " + res.getString("habilitado"));
             }
