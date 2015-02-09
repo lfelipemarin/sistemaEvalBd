@@ -20,7 +20,7 @@ public class ConexionDb {
     public ConexionDb() throws IOException {
 
         Properties prop = new Properties();
-        String propFileName = "RecursosTecnicos/configuracion/configuracion.properties";
+        String propFileName = "co/edu/udea/sistemaevaluaciones/recursostecnicos/configuracion/configuracion.properties";
 
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
 

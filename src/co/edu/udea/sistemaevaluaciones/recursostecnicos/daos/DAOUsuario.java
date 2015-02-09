@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAOUsuario {
 
@@ -22,8 +23,10 @@ public class DAOUsuario {
     }
 
     //public Object [][] getEstudianteAnd(ConexionDb conn, Usuario usuario){
-    public void getEstudianteAnd(Usuario u, String param, ConexionDb c) {
+    public ArrayList<Usuario> getEstudianteAnd(Usuario u, String param, ConexionDb c) {
         String sentencia = "SELECT * FROM usuario u WHERE";
+        Usuario usuarioRetorno;
+        ArrayList<Usuario> arregloUsuarios = new ArrayList<>();
         try {
             Connection conexion = c.getConnection();
             int numAtrib = 1;
@@ -76,6 +79,16 @@ public class DAOUsuario {
             System.out.println("consulta :" + pstm);
             ResultSet res = pstm.executeQuery();
             while (res.next()) {
+                usuarioRetorno = new Usuario();
+
+                usuarioRetorno.setCodigo(res.getInt("codigo"));
+                usuarioRetorno.setNombre(res.getString("nombre"));
+                usuarioRetorno.setApellido(res.getString("apellido"));
+                usuarioRetorno.setRol(res.getInt("rol"));
+                usuarioRetorno.setPassword(res.getString("passwd"));
+
+                arregloUsuarios.add(usuarioRetorno);
+
                 System.out.println("Codigo: " + res.getString("codigo"));
                 System.out.println("Nombre: " + res.getString("nombre"));
                 System.out.println("Apelido: " + res.getString("apellido"));
@@ -86,14 +99,17 @@ public class DAOUsuario {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        return arregloUsuarios;
     }
 //	public <Collection>Usuario getEstudiantesOr(Usuario estudiante){
 //		return null;
 //	}
 
-    public void getEstudiantesOr(Usuario u, String param, ConexionDb c) {
+    public ArrayList<Usuario> getEstudiantesOr(Usuario u, String param, ConexionDb c) {
         String sentencia = "SELECT * FROM usuario u WHERE codigo = ? OR "
                 + "nombre = ? OR apellido = ? OR rol = ?";
+        Usuario usuarioRetorno;
+        ArrayList<Usuario> arregloUsuarios = new ArrayList<>();
 
         try {
             PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
@@ -134,6 +150,15 @@ public class DAOUsuario {
             System.out.println("consulta :" + pstm);
             ResultSet res = pstm.executeQuery();
             while (res.next()) {
+                usuarioRetorno = new Usuario();
+
+                usuarioRetorno.setCodigo(res.getInt("codigo"));
+                usuarioRetorno.setNombre(res.getString("nombre"));
+                usuarioRetorno.setApellido(res.getString("apellido"));
+                usuarioRetorno.setRol(res.getInt("rol"));
+                usuarioRetorno.setPassword(res.getString("passwd"));
+
+                arregloUsuarios.add(usuarioRetorno);
                 System.out.println("Codigo: " + res.getString("codigo"));
                 System.out.println("Nombre: " + res.getString("nombre"));
                 System.out.println("Apelido: " + res.getString("apellido"));
@@ -145,6 +170,7 @@ public class DAOUsuario {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        return arregloUsuarios;
     }
 
 //	public Usuario getUsuarioAnd(Usuario usuario){
@@ -482,7 +508,7 @@ public class DAOUsuario {
         }
     }
 
-       //prueba listar getEstudianteAnd
+    //prueba listar getEstudianteAnd
     //(Usuario u, String param, Connection c
 //    public static void main(String[] args) throws IOException {
 //        Usuario u = new Usuario();
@@ -506,11 +532,12 @@ public class DAOUsuario {
     //prueba listar getUsuarioAnd
     public static void main(String[] args) throws IOException {
         Usuario u = new Usuario();
-        u.setCodigo(1);
-        u.setNombre("edwin");
+//        u.setCodigo(1);
+//        u.setNombre("edwin");
+        u.setRol(1);
         DAOUsuario dao = new DAOUsuario();
         ConexionDb con = new ConexionDb();
-        dao.getUsuarioAnd(u, null, con);
+        dao.getEstudianteAnd(u, null, con);
     }
      //prueba insertgar grupo
 //  public static void main(String[] args) throws IOException {        
