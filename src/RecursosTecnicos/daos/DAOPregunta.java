@@ -69,6 +69,8 @@ public class DAOPregunta {
 	 */
 	public <Collection>Pregunta listarPreguntasOr(Pregunta pregunta){
 		return null;
-	}
+	      
+        
+        }
 
 }
