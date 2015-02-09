@@ -266,10 +266,45 @@ public class DAOPreguntaMauro {
             pstm.execute();
             pstm.close();
             System.out.println("error2 :" + pstm);
-        } catch (SQLException e) {
-            System.out.println(e);
+         }catch(SQLException e){
+         System.out.println(e);
+      }
+   }
+
+public ArrayList<AreaDeConocimiento> listarAreaDeConocimientos(AreaDeConocimiento a, ConexionDb c){
+		
+	     String sentencia = "SELECT * FROM area_conocimiento a";
+              AreaDeConocimiento areasRetorno;
+              ArrayList<AreaDeConocimiento> arregloAreas = new ArrayList<>();
+        try {
+            PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            
+            System.out.println("consulta :" + pstm);
+            ResultSet res = pstm.executeQuery();
+            while (res.next()) {
+               areasRetorno = new AreaDeConocimiento();
+               
+               areasRetorno.setCodigo(res.getInt("codigo"));
+               areasRetorno.setNombre(res.getString("nombre"));
+               areasRetorno.setDescripcion(res.getString("descripcion"));
+               areasRetorno.setArea_padre(res.getInt("area_padre"));
+               
+               arregloAreas.add(areasRetorno);
+            //Prueba de impresion en consola............
+                System.out.println("codigo: " + res.getInt("codigo"));
+                System.out.println("nombre: " + res.getString("nombre"));
+                System.out.println("Descripcio: " + res.getString("descripcion"));
+                System.out.println("Area padre: " + res.getInt("area_padre"));
+            }
+            pstm.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
         }
-    }
+            return arregloAreas;
+        }
 
 //	public <Collection>Pregunta listarPreguntas(){
 //		return null;
