@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RecursosTecnicos.daos;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
 
-import RecursosTecnicos.dbUtilConeccionDB.ConexionDb;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import beans.Usuario;
 import java.io.IOException;
 import java.sql.Connection;
@@ -28,6 +28,9 @@ public class DAOGenericoAND {
     public void getUsuario(Usuario u, String param, ConexionDb c) {
         String sentencia = "SELECT * FROM usuario u WHERE";
 
+        if (u.getRol() == 2) {
+            return;
+        }
         try {
             Connection conexion = c.getConnection();
             int numAtrib = 1;
@@ -101,12 +104,14 @@ public class DAOGenericoAND {
 
     public static void main(String[] args) throws IOException {
         Usuario u = new Usuario();
-        u.setCodigo(1);
-        u.setNombre("mauricio");
-//        u.setRol(1);
-        DAOGenericoAND dao = new DAOGenericoAND();
+//        u.setCodigo(2);
+//        u.setNombre("mauricio");
+        u.setRol(1);
+//        DAOGenericoAND dao = new DAOGenericoAND();
+        DAOUsuario us = new DAOUsuario();
         ConexionDb con = new ConexionDb();
-        dao.getUsuario(u, null, con);
+        us.getEstudianteAnd(u, null, con);
+//        dao.getUsuario(u, null, con);
 
     }
 

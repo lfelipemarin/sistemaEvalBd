@@ -1,7 +1,7 @@
-package RecursosTecnicos.daos;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import RecursosTecnicos.dbUtilConeccionDB.ConexionDb;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import java.sql.ResultSet;
 import beans.*;
 import java.io.IOException;

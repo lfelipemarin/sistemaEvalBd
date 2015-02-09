@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RecursosTecnicos.dbUtilConeccionDB;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil;
 
 import java.io.InputStream;
 import java.sql.Connection;

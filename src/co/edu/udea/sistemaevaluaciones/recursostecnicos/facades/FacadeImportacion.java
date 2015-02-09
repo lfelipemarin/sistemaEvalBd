@@ -1,4 +1,4 @@
-package Facade;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.facades;
 
 import beans.*;
 import java.util.ArrayList;

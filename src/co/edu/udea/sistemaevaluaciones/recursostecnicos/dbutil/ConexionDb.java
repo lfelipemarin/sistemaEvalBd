@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RecursosTecnicos.dbUtilConeccionDB;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil;
 
-import RecursosTecnicos.daos.DAOGenericoAND;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOGenericoAND;
 import beans.Usuario;
 import java.io.FileNotFoundException;
 import java.io.IOException;

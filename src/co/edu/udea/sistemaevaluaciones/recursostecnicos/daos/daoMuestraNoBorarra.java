@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package RecursosTecnicos.daos;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
 
 
 import beans.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import RecursosTecnicos.dbUtilConeccionDB.ConexionDb;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import java.sql.ResultSet;
     
 /**

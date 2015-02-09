@@ -5,8 +5,8 @@
  */
 package sistemaEvaluaciones;
 
-import RecursosTecnicos.daos.DAOGenericoAND;
-import RecursosTecnicos.dbUtilConeccionDB.ConexionDb;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOGenericoAND;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import beans.Usuario;
 import java.io.IOException;
 
