@@ -5,7 +5,7 @@
  */
 package RecursosTecnicos.dbUtilConeccionDB;
 
-import RecursosTecnicos.daos.DAOGenerico;
+import RecursosTecnicos.daos.DAOGenericoAND;
 import beans.Usuario;
 import java.io.FileNotFoundException;
 import java.io.IOException;

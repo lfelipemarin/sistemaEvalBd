@@ -16,9 +16,10 @@ import java.sql.SQLException;
  *
  * @author FelipeWin
  */
-public class DAOMestraFelipe {
+public class DAOGenericoOR {
 
     public void getUsuario(Usuario u, String param, ConexionDb c) {
+
         String sentencia = "SELECT * FROM usuario u WHERE codigo = ? OR "
                 + "nombre = ? OR apellido = ? OR rol = ?";
 
@@ -78,7 +79,7 @@ public class DAOMestraFelipe {
         Usuario u = new Usuario();
         //u.setCodigo(2);
         u.setNombre("mauricio");
-        DAOMestraFelipe dao = new DAOMestraFelipe();
+        DAOGenericoOR dao = new DAOGenericoOR();
         ConexionDb con = new ConexionDb();
         dao.getUsuario(u, null, con);
 
