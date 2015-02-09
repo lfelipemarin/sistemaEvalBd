@@ -5,6 +5,7 @@ import RecursosTecnicos.dbUtilConeccionDB.ConexionDb;
 import java.sql.ResultSet;
 import beans.*;
 import java.io.IOException;
+import java.util.Date;
 /**
  * @author FelipeWin
  * @version 1.0
@@ -48,10 +49,61 @@ public class DAOPreguntaMauro {
 //	 * 
 //	 * @param pregunta
 //	 */
-//	public guardarPregunta(Pregunta pregunta){
-//
-//	}
-//
+	public void guardarPregunta(Pregunta p, ConexionDb conn){
+            p.setCodigo(10);
+            p.setEnunciado("El enunciado 3");
+            p.setTipo(1);
+            p.setMateria(1);
+            p.setHabilitado(true);
+            p.setFecha_creacion(java.sql.Date.valueOf("2015-10-25"));
+            p.setContexto(1);
+            p.setAutor(1055831540);
+            p.setGradoDificultad(1);
+            p.setImagen(null);
+            p.setNivelEvaluativo(1);
+            
+            
+            int codigo =p.getCodigo();
+            String enunciado =p.getEnunciado();
+            int tipo = p.getTipo();
+            int materia = p.getMateria();
+            boolean habilitado = p.isHabilitado();
+            Date fecha_creacion = p.getFecha_creacion();
+            int contexto = p.getContexto();
+            int autor =p.getAutor();
+            int grado_dificultad=p.getGradoDificultad();
+            String imagen =p.getImagen();
+            int nivel_evaluativo =p.getNivelEvaluativo();
+            
+          String sentencia =  "INSERT INTO `pregunta` (`codigo`, `enunciado`, `tipo`, `materia`, `habilitado`, `fecha_creacion`, `contexto`, `autor`, `grado_dificultad`, `imagen`, `nivel_evaluativo`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+               
+            try {
+      
+                PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);            
+
+                pstm.setInt(1, codigo);
+                pstm.setString(2, enunciado);
+                pstm.setInt(3, tipo);
+                pstm.setInt(4, materia);
+                pstm.setBoolean(5, habilitado);
+                pstm.setDate(6, (java.sql.Date)fecha_creacion);
+                pstm.setInt(7, contexto);
+                pstm.setInt(8, autor);
+                pstm.setInt(9, grado_dificultad);
+                pstm.setString(10, imagen);
+                pstm.setInt(11, nivel_evaluativo);
+                
+        System.out.println("consulta :" + pstm);
+        pstm.execute();
+        pstm.close();            
+            System.out.println("error2 :" + pstm);
+         }catch(SQLException e){
+         System.out.println(e);
+      }
+   }
+
+
+
 //	public <Collection>Pregunta listarPreguntas(){
 //		return null;
 //	}
@@ -138,10 +190,10 @@ public class DAOPreguntaMauro {
     public static void main(String[] args) throws IOException {
         Pregunta p = new Pregunta();
         //u.setCodigo(2);
-        p.setContexto(1);
+        p.setTipo(1);
         DAOPreguntaMauro dao = new DAOPreguntaMauro();
         ConexionDb con = new ConexionDb();
-        dao.listarPreguntasOr(p, null, con);
+        dao.listarPreguntasOr(p,null, con);
 
     }
 }
