@@ -24,26 +24,138 @@ public class DAOPreguntaMauro {
 	 * 
 	 * @param contexto
 	 */
-	public Contexto buscarContexto(Contexto contexto){
-		return null;
+	public Contexto buscarContexto(Contexto c, ConexionDb conn){
+            String sentencia = "SELECT * FROM contexto c  WHERE codigo = ? OR "
+                + "enunciado = ? OR imagen = ? OR fecha_creacion = ? OR autor = ? OR titulo = ?";
+
+        try {
+            PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            if (c.getCodigo()!= 0) {
+                pstm.setInt(numAtrib, c.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");  
+                numAtrib++;
+            }
+
+            if (c.getEnunciado() != null ) {
+                pstm.setString(numAtrib, c.getEnunciado());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+
+            if (c.getImagen() != null) {
+                pstm.setString(numAtrib, c.getImagen());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+
+            if (c.getFecha_creacion()!= null) {
+                pstm.setDate(numAtrib, c.getFecha_creacion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+
+            if (c.getAutor()!= 0) {
+                pstm.setInt(numAtrib, c.getAutor());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            
+            if (c.getTitulo()!= null) {
+                pstm.setString(numAtrib, c.getTitulo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            System.out.println("consulta :" + pstm);
+            ResultSet res = pstm.executeQuery();
+            while (res.next()) {
+                System.out.println("Codigo: " + res.getString("codigo"));
+                System.out.println("enunciado: " + res.getString("enunciado"));
+                System.out.println("fecha Creacion: " + res.getString("fecha_creacion"));
+                System.out.println("autor: " + res.getString("autor"));
+                System.out.println("titulo: " + res.getString("titulo"));
+                
+            }
+            pstm.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+            return null;
+        }
+	
+//	/**
+//	 * 
+//	 * @param area
+//	 */
+	public void guardarAreaDeConocimiento(AreaDeConocimiento area, ConexionDb conn){
+            String sentencia =  "INSERT INTO `area_conocimiento` (`codigo`, `nombre`, `descripcion`, `area_padre` ) VALUES (?,?,?,?)";
+               int cod_area = area.getCodigo();
+               String nombre = area.getNombre();
+               String descripcion = area.getDescripcion();
+               int area_padre = area.getArea_padre();
+            try {
+      
+                PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);            
+
+                pstm.setInt(1, cod_area);
+                pstm.setString(2, nombre);
+                pstm.setString(3, descripcion);
+                pstm.setInt(4, area_padre);
+                
+        System.out.println("consulta :" + pstm);
+        pstm.execute();
+        pstm.close();            
+            System.out.println("error2 :" + pstm);
+         }catch(SQLException e){
+         System.out.println(e);
+      }
+            
+            
+
 	}
 
-//	/**
-//	 * 
-//	 * @param area
-//	 */
-//	public guardarAreaDeConocimiento(AreaDeConocimiento area){
-//
-//	}
-//
-//	/**
-//	 * 
-//	 * @param area
-//	 * @param pregunta
-//	 */
-//	public guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta){
-//
-//	}
+	/**
+	 * 
+	 * @param area
+	 * @param pregunta
+	 */
+	public void guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta, ConexionDb conn){
+            String sentencia =  "INSERT INTO `area_conocimiento_x_pregunta` (`area_conocimiento`, `pregunta`) VALUES (?,?)";
+               int cod_area = area.getCodigo();
+               int cod_pregunta = pregunta.getCodigo();
+            try {
+      
+                PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);            
+
+                pstm.setInt(1, cod_area);
+                pstm.setInt(2, cod_pregunta);
+                
+                
+        System.out.println("consulta :" + pstm);
+        pstm.execute();
+        pstm.close();            
+            System.out.println("error2 :" + pstm);
+         }catch(SQLException e){
+         System.out.println(e);
+      }
+            
+	}
 //
 //	/**
 //	 * 
@@ -123,7 +235,7 @@ public class DAOPreguntaMauro {
 	public <Collection>Pregunta listarPreguntasOr(Pregunta p, String param, ConexionDb c){
 		//return null;
 	      String sentencia = "SELECT * FROM pregunta p WHERE fecha_creacion = ? OR "
-                + "tipo = ? OR contexto = ? OR grado_dificultad = ?"; // OR habilitado = ?";
+                + "tipo = ? OR contexto = ? OR grado_dificultad = ? OR habilitado = ?";
 //En el modulo 1 segun el prototipo tambien pueden buscar por area del conocimiento campo o valor que no esta actualmente en las preguntas
         try {
             PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
@@ -160,14 +272,14 @@ public class DAOPreguntaMauro {
                 pstm.setString(numAtrib, "%");
                 numAtrib++;
             }
-// Falta este en la BD y en los metodos de las preguntas
-//            if (p.gethabilitado()!= 0) {
-//                pstm.setInt(numAtrib, p.getGradoDificultad());
-//                numAtrib++;
-//            } else {
-//                pstm.setString(numAtrib, "%");
-//                numAtrib++;
-//            }
+
+            if (p.isHabilitado()!= false) {
+                pstm.setInt(numAtrib, p.getGradoDificultad());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
             
             System.out.println("consulta :" + pstm);
             ResultSet res = pstm.executeQuery();
@@ -189,11 +301,14 @@ public class DAOPreguntaMauro {
 
     public static void main(String[] args) throws IOException {
         Pregunta p = new Pregunta();
-        //u.setCodigo(2);
-        p.setTipo(1);
+        Contexto c = new Contexto();
+        AreaDeConocimiento a = new AreaDeConocimiento();
+        p.setCodigo(10);
+        a.setCodigo(1);
+        c.setCodigo(1);
         DAOPreguntaMauro dao = new DAOPreguntaMauro();
         ConexionDb con = new ConexionDb();
-        dao.listarPreguntasOr(p,null, con);
+        dao.buscarContexto(c, con);
 
     }
 }
