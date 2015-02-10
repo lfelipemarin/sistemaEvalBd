@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import java.sql.ResultSet;
 import beans.*;
+import java.util.ArrayList;
 
 /**
  * @author FelipeWin
@@ -55,6 +56,140 @@ public class DAOPreguntaMauro {
                 numAtrib++;
             }
 
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void registrarAreaConocimientoDePregunta(AreaDeConocimiento ac, Pregunta p) {
+        String sentencia = "INSERT INTO area_conocimiento_x_pregunta values(?,?)";
+
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            if (ac.getCodigo() != 0) {
+                pstm.setInt(numAtrib, ac.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getCodigo() != 0) {
+                pstm.setString(numAtrib, ac.getNombre());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void registrarPregunta(Pregunta p) {
+        String sentencia = "INSERT INTO pregunta values(?,?,?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            if (p.getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getEnunciado() != null) {
+                pstm.setString(numAtrib, p.getEnunciado());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getTipo() != 0) {
+                pstm.setInt(numAtrib, p.getTipo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getMateria().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getMateria().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+            
+            if (p.isHabilitado() != false ) {
+                pstm.setBoolean(numAtrib, p.isHabilitado());
+                numAtrib++;
+            } else {
+                pstm.setBoolean(numAtrib, false);
+                numAtrib++;
+            }
+             
+            if (p.getFechaCreacion() != null) {
+                pstm.setString(numAtrib, p.getFechaCreacion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+             
+            if (p.getContexto().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getContexto().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+             
+            if (p.getAutor().getCodigo()!= 0) {
+                pstm.setInt(numAtrib, p.getAutor().getCodigo());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+            if (p.getGradoDificultad().getCodigo()!= 0) {
+                pstm.setInt(numAtrib, p.getGradoDificultad().getCodigo());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+            if (p.getImagen() != null) {
+                pstm.setString(numAtrib, p.getImagen());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+              
+            if (p.getNivelEvaluativo()!= null) {
+                pstm.setString(numAtrib, p.getNivelEvaluativo().toString()); // Si es a String el campo en la DB es INT
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
             System.out.println("consulta :" + pstm);
             pstm.execute();
             pstm.close();
@@ -185,10 +320,11 @@ public class DAOPreguntaMauro {
      * @param c
      * @return
      */
-    public Contexto buscarContextoOR(Contexto c) {
+    public ArrayList <Contexto> buscarContextoOR(Contexto c) {
         String sentencia = "SELECT * FROM contexto c WHERE codigo = ? OR "
                 + "enunciado LIKE ? OR imagen = ? OR fecha_creacion = ? OR autor = ? OR titulo = ?";
-
+           Contexto contextoRetorno;
+        ArrayList<Contexto> arregloContexto = new ArrayList<>();
         try {
             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
             int numAtrib = 1;
@@ -244,6 +380,21 @@ public class DAOPreguntaMauro {
             System.out.println("consulta :" + pstm);
             ResultSet res = pstm.executeQuery();
             while (res.next()) {
+                
+                contextoRetorno = new Contexto();
+
+                contextoRetorno.setCodigo(res.getInt("codigo"));
+                contextoRetorno.setEnunciado(res.getString("enunciado"));
+                contextoRetorno.setImagen(res.getString("imagen"));
+                contextoRetorno.setFechaCreacion(res.getString("fecha_creacion"));
+//                contextoRetorno.setAutor(res.getInt("autor"));
+                contextoRetorno.setTitulo(res.getString("titulo"));
+
+               arregloContexto.add(contextoRetorno);
+                
+                
+                
+                //Prueba de impresion en consola
                 System.out.println("Codigo: " + res.getString("codigo"));
                 System.out.println("enunciado: " + res.getString("enunciado"));
                 System.out.println("fecha Creacion: " + res.getString("fecha_creacion"));
