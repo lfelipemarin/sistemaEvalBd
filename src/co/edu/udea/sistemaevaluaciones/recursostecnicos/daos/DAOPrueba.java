@@ -15,15 +15,35 @@ public class DAOPrueba {
 
     public DAOPrueba() {
     }
-    
-    
+
     /*
      1. getGruposPorProfesor(usuario): Recibe un objeto Usuario (en este caso con rol de profesor) y nos retorna una colección con todos los grupos pertenecientes a él (los que él esté dictando).
 
-    hecho***** 2. getEvaluacionesPorGrupo(grupo): Recibe un objeto Grupo y retorna una colección con todas las evaluaciones que pertenezcan a este grupo.
+     hecho***** 2. getEvaluacionesPorGrupo(grupo): Recibe un objeto Grupo y retorna una colección con todas las evaluaciones que pertenezcan a este grupo.
 
      3. getRespuestasPorEstudiantePorEvaluacion(usuario, evaluación): Recibe un objeto Usuario (en este caso con rol de estudiante) y un objeto Evaluación y retorna una lista con los objetos "Respuesta" de ese usuario a esa evaluación.
      */
+    public ArrayList<Grupo> getGruposPorProfesor(Usuario u) {
+        String sentencia = "SELECT * FROM grupo WHERE profesor = ?";
+        ArrayList<Grupo> grupos = new ArrayList<>();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, u.getCodigo());
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                grupos.add(getGrupoPorId(res.getInt("codigo")));
+            }
+            return grupos;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 
     public ArrayList<Evaluacion> getEvaluacionesPorGrupo(Grupo g) {
         ArrayList<Evaluacion> evaluaciones = new ArrayList<>();
@@ -480,8 +500,6 @@ public class DAOPrueba {
         }
         return evaluaciones;
     }
-
-
 
     /*
      metodo necesario para ejecutar getPruebasPorGrupo
