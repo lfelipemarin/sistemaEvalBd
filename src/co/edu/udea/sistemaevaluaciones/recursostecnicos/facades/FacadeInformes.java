@@ -10,39 +10,10 @@ import java.util.ArrayList;
  */
 public interface FacadeInformes {
 
-    /**
-     *
-     * @param estudiante
-     * @return 
-     */
-    public ArrayList<Usuario> getEstudiantesAnd(Usuario estudiante);
+    public ArrayList<Grupo> getGruposPorProfesor(Usuario usuario);
 
-    /**
-     *
-     * @param estudiante
-     * @return 
-     */
-    public ArrayList<Usuario> getEstudiantesOr(Usuario estudiante);
+    public ArrayList<Evaluacion> getEvaluacionesPorGrupo(Grupo grupo);
 
-    /**
-     *
-     * @param evaluacion
-     * @return 
-     */
-    public ArrayList<Evaluacion> getEvaluacionesAnd(Evaluacion evaluacion);
-
-    /**
-     *
-     * @param evaluacion
-     * @return 
-     */
-    public ArrayList<Evaluacion> getEvaluacionesOr(Evaluacion evaluacion);
-
-    /**
-     *
-     * @param materia
-     * @return 
-     */
-    public ArrayList<Evaluacion> getEvaluacionesPorMateria(Materia materia);
+    public ArrayList<Respuesta> getRespuestasPorEstudiantePorEvaluacion(Grupo grupo);
 
 }

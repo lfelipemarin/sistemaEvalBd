@@ -1,7 +1,6 @@
 package co.edu.udea.sistemaevaluaciones.recursostecnicos.facades;
 
 import beans.*;
-import java.util.ArrayList;
 
 /**
  * @author FelipeWin
@@ -27,20 +26,6 @@ public interface FacadeImportacion {
      * @param usuario
      */
     public void guardarUsuario(Usuario usuario);
-
-    /**
-     *
-     * @param grupo
-     * @return
-     */
-    public ArrayList<Grupo> listarGruposAnd(Grupo grupo);
-
-    /**
-     *
-     * @param grupo
-     * @return 
-     */
-    public ArrayList<Grupo> listarGruposOr(Grupo grupo);
 
     /**
      *
