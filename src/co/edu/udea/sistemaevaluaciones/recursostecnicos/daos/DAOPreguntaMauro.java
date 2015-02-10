@@ -387,13 +387,11 @@ public class DAOPreguntaMauro {
                 contextoRetorno.setEnunciado(res.getString("enunciado"));
                 contextoRetorno.setImagen(res.getString("imagen"));
                 contextoRetorno.setFechaCreacion(res.getString("fecha_creacion"));
-//                contextoRetorno.setAutor(res.getInt("autor"));
+                contextoRetorno.setAutor(getUsuarioPorId(res.getInt("autor")));
                 contextoRetorno.setTitulo(res.getString("titulo"));
 
                arregloContexto.add(contextoRetorno);
-                
-                
-                
+                                        
                 //Prueba de impresion en consola
                 System.out.println("Codigo: " + res.getString("codigo"));
                 System.out.println("enunciado: " + res.getString("enunciado"));
@@ -407,8 +405,80 @@ public class DAOPreguntaMauro {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return null;
+        return arregloContexto;
     }
+    
+    public ArrayList<AreaDeConocimiento> listarAreaDeConocimientos(AreaDeConocimiento a) {
+
+        String sentencia = "SELECT * FROM area_conocimiento a WHERE codigo = ? OR"
+                +"nombre = ? OR descripcion = ? OR area_padre = ?";
+        AreaDeConocimiento areasRetorno;
+        ArrayList<AreaDeConocimiento> arregloAreas = new ArrayList<>();
+        try {
+             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+            
+            if (a.getCodigo() != 0) {
+                pstm.setInt(numAtrib, a.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            if (a.getNombre() != null) {
+                pstm.setString(numAtrib, a.getNombre());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            if (a.getDescripcion() != null) {
+                pstm.setString(numAtrib, a.getDescripcion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+
+            if (a.getAreaPadre().getCodigo() != 0) {
+                pstm.setInt(numAtrib,a.getAreaPadre().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+
+            System.out.println("consulta :" + pstm);
+            ResultSet res = pstm.executeQuery();
+            while (res.next()) {
+                areasRetorno = new AreaDeConocimiento();
+
+                areasRetorno.setCodigo(res.getInt("codigo"));
+                areasRetorno.setNombre(res.getString("nombre"));
+                areasRetorno.setDescripcion(res.getString("descripcion"));
+                areasRetorno.setAreaPadre(getAreaDeConocimientoPorId(res.getInt("area_padre")));
+
+                arregloAreas.add(areasRetorno);
+                //Prueba de impresion en consola............
+                System.out.println("codigo: " + res.getInt("codigo"));
+                System.out.println("nombre: " + res.getString("nombre"));
+                System.out.println("Descripcio: " + res.getString("descripcion"));
+                System.out.println("Area padre: " + res.getInt("area_padre"));
+            }
+            pstm.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return arregloAreas;
+    }
+
+	public <Collection>Pregunta listarPreguntas(){
+		return null;
+	}
+
 
 //	/**
 //	 * 
@@ -653,4 +723,77 @@ public class DAOPreguntaMauro {
 //        }
 //        return arregloPreguntas;
 //    }
+public Usuario getUsuarioPorId(int id) {
+        String sentencia = "SELECT * FROM usuario WHERE codigo = ?";
+        Usuario u = new Usuario();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                u.setCodigo(res.getInt("codigo"));
+                u.setNombre(res.getString("nombre"));
+                u.setApellido(res.getString("apellido"));
+                u.setPassword(res.getString("passwd"));
+                u.setRol(getRolPorId(res.getInt("rol")));
+            }
+            return u;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+public Rol getRolPorId(int id) {
+        String sentencia = "SELECT * FROM rol WHERE codigo = ?";
+        Rol rol = new Rol();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                rol.setCodigo(res.getInt("codigo"));
+                rol.setNombre(res.getString("nombre"));
+            }
+            return rol;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+
+    }
+
+public AreaDeConocimiento getAreaDeConocimientoPorId(int id) {
+        String sentencia = "SELECT * FROM area_conocimiento WHERE codigo = ?";
+        AreaDeConocimiento ac = new AreaDeConocimiento();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                ac.setCodigo(res.getInt("codigo"));
+                ac.setNombre(res.getString("nombre"));
+                ac.setNombre(res.getString("descripcion"));
+            }
+            return ac;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 }
