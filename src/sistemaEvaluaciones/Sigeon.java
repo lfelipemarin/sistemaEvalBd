@@ -8,7 +8,7 @@ package sistemaEvaluaciones;
 import beans.Evaluacion;
 import beans.Grupo;
 import beans.Usuario;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOPrueba;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.extras.DAOPrueba;
 import java.io.IOException;
 
 /**

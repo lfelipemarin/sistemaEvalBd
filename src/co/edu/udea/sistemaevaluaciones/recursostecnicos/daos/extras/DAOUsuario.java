@@ -1,6 +1,6 @@
-package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.extras;
 
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbUtil.ConexionDb;
 import java.sql.ResultSet;
 import beans.*;
 import java.io.IOException;

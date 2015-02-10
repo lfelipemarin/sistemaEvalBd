@@ -10,7 +10,7 @@ import beans.Grupo;
 import beans.Prueba;
 import beans.Respuesta;
 import beans.Usuario;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbUtil.ConexionDb;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

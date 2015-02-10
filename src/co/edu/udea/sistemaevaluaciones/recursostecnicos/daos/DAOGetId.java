@@ -19,7 +19,7 @@ import beans.Respuesta;
 import beans.Rol;
 import beans.TipoPregunta;
 import beans.Usuario;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbUtil.ConexionDb;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 

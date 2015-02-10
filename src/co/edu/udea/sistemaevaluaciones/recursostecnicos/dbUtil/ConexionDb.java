@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil;
+package co.edu.udea.sistemaevaluaciones.recursostecnicos.dbUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
