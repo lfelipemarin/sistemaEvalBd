@@ -251,7 +251,62 @@ public class DAOPreguntaMauro {
             System.out.println(e);
         }
     }
+public void registrarCuestionario(Cuestionario cn) {
+        String sentencia = "INSERT INTO cuestionario values(?,?,?,?,?)";
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1; 
+            
+            if (cn.getCodigo() != 0) {
+                pstm.setInt(numAtrib, cn.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
 
+            if (cn.getNombre() != null) {
+                pstm.setString(numAtrib, cn.getNombre());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (cn.getNumeroPreguntas() != 0) {
+                pstm.setInt(numAtrib, cn.getNumeroPreguntas());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (cn.getFechaCreacion() != null) {
+                pstm.setString(numAtrib, cn.getFechaCreacion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+            
+                         
+            if (cn.getAutor().getCodigo()!= 0) {
+                pstm.setInt(numAtrib, cn.getAutor().getCodigo());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+           
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+            
     public void registrarContexto(Contexto c) {
         String sentencia = "INSERT INTO contexto values(?,?,?,?,?,?)";
         try {
