@@ -11,40 +11,68 @@ package beans;
  */
 public class Grupo {
 
-    int codigo;
-    int materia;
-    String semestre;
-    int profesor;
+    private int codigo;
+    private Materia materia;
+    private String semestre;
+    private Usuario profesor;
 
+    public Grupo() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public int getMateria() {
+    /**
+     * @return the materia
+     */
+    public Materia getMateria() {
         return materia;
     }
 
-    public void setMateria(int materia) {
+    /**
+     * @param materia the materia to set
+     */
+    public void setMateria(Materia materia) {
         this.materia = materia;
     }
 
+    /**
+     * @return the semestre
+     */
     public String getSemestre() {
         return semestre;
     }
 
+    /**
+     * @param semestre the semestre to set
+     */
     public void setSemestre(String semestre) {
         this.semestre = semestre;
     }
 
-    public int getProfesor() {
+    /**
+     * @return the profesor
+     */
+    public Usuario getProfesor() {
         return profesor;
     }
 
-    public void setProfesor(int profesor) {
+    /**
+     * @param profesor the profesor to set
+     */
+    public void setProfesor(Usuario profesor) {
         this.profesor = profesor;
     }
 }

@@ -11,8 +11,8 @@ package beans;
  */
 public class TipoPregunta {
 
-    int codigo;
-    String tipo;
+    private int codigo;
+    private String tipo;
 
     public int getCodigo() {
         return codigo;

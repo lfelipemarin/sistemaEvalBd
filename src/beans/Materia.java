@@ -11,31 +11,54 @@ package beans;
  */
 public class Materia {
 
-    int codigo;
-    String nombre;
-    int area_conocimiento;
+    private int codigo;
+    private String nombre;
+    private AreaDeConocimiento areaConocimiento;
 
+    public Materia() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * @return the nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * @param nombre the nombre to set
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public int getArea_conocimiento() {
-        return area_conocimiento;
+    /**
+     * @return the areaConocimiento
+     */
+    public AreaDeConocimiento getAreaConocimiento() {
+        return areaConocimiento;
     }
 
-    public void setArea_conocimiento(int area_conocimiento) {
-        this.area_conocimiento = area_conocimiento;
+    /**
+     * @param areaConocimiento the areaConocimiento to set
+     */
+    public void setAreaConocimiento(AreaDeConocimiento areaConocimiento) {
+        this.areaConocimiento = areaConocimiento;
     }
+
 }
