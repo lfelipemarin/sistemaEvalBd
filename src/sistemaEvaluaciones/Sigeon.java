@@ -5,17 +5,9 @@
  */
 package sistemaEvaluaciones;
 
-import beans.AreaDeConocimiento;
-import beans.Contexto;
-import beans.Evaluacion;
 import beans.Pregunta;
-import beans.Prueba;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOGenericoAND;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
-import beans.Usuario;
+import beans.Respuesta;
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOPreguntaMauro;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOPrueba;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOUsuario;
 import java.io.IOException;
 
 /**
@@ -49,7 +41,6 @@ public class Sigeon {
 //        ConexionDb con = new ConexionDb();
 //        us.getEstudianteAnd(u, null, con);
 ////        dao.getUsuario(u, null, con);
-        
 //                Pregunta p = new Pregunta();
 //        Contexto c = new Contexto();
 //        AreaDeConocimiento a = new AreaDeConocimiento();
@@ -59,8 +50,6 @@ public class Sigeon {
 //        DAOPreguntaMauro dao = new DAOPreguntaMauro();
 //        ConexionDb con = new ConexionDb();
 //        dao.buscarContexto(c, con);
-
-        
 //                Usuario u = new Usuario();
 ////        u.setCodigo(1);
 ////        u.setNombre("edwin");
@@ -68,7 +57,6 @@ public class Sigeon {
 //        DAOUsuario dao = new DAOUsuario();
 //        ConexionDb con = new ConexionDb();
 //        dao.getEstudianteAnd(u, null, con);
-        
 //        Usuario estudiante = new Usuario();
 //        estudiante.setCodigo(2);
 //        Prueba prueba = new Prueba();
@@ -79,19 +67,30 @@ public class Sigeon {
 //        e.setPrueba(prueba);
 //        DAOPrueba x = new DAOPrueba();
 //        x.getEvaluacionesOr(e);
+//        Usuario profe = new Usuario();
+//        profe.setCodigo(1);
+//        Contexto c = new Contexto();
+////        c.setAutor(profe);
+////        c.setCodigo(2);
+//        c.setEnunciado("dos");
+////        c.setFechaCreacion("2014-01-01 00:00:00");
+////        c.setImagen("");
+////        c.setTitulo("titulo dos");
+//        DAOPreguntaMauro daopm = new DAOPreguntaMauro();
+////        daopm.registrarContexto(c);
+//        daopm.buscarContextoOR(c);
         
-        Usuario profe = new Usuario();
-        profe.setCodigo(1);
-        Contexto c = new Contexto();
-        c.setAutor(profe);
-        c.setCodigo(2);
-        c.setEnunciado("enun dos");
-        c.setFechaCreacion("2014-01-01 00:00:00");
-        c.setImagen("");
-        c.setTitulo("titulo dos");
+        Respuesta r = new Respuesta();
+        r.setCodigo(1);
+        r.setCorrecta(true);
+        r.setImagen(null);
+        Pregunta p = new Pregunta();
+        p.setCodigo(1);
+        r.setPregunta(p);
+        r.setTexto("texto rta 1 preg 1");
         DAOPreguntaMauro daopm = new DAOPreguntaMauro();
-        daopm.registrarContexto(c);
-        
+        daopm.registrarRespuesta(r);
+
 
     }
 

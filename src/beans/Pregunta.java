@@ -5,112 +5,179 @@
  */
 package beans;
 
-import java.sql.Date;
-
 /**
  *
  * @author eaagudelr
  */
 public class Pregunta {
-    
-    int codigo;
-    String enunciado;
-    int tipo;
-    int materia;
-    boolean habilitado;
-    Date fecha_creacion;
-    int contexto;
-    int autor;
-    int gradoDificultad;
-    String imagen;
-    int nivelEvaluativo;
 
+    private int codigo;
+    private String enunciado;
+    private int tipo;
+    private Materia materia;
+    private boolean habilitado;
+    private String fechaCreacion;
+    private Contexto contexto;
+    private Usuario autor;
+    private GradoDeDificultad gradoDificultad;
+    private String imagen;
+    private NivelEvaluativo nivelEvaluativo;
+
+    public Pregunta() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * @return the enunciado
+     */
     public String getEnunciado() {
         return enunciado;
     }
 
+    /**
+     * @param enunciado the enunciado to set
+     */
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
 
+    /**
+     * @return the tipo
+     */
     public int getTipo() {
         return tipo;
     }
 
+    /**
+     * @param tipo the tipo to set
+     */
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
 
-    public int getMateria() {
+    /**
+     * @return the materia
+     */
+    public Materia getMateria() {
         return materia;
     }
 
-    public void setMateria(int materia) {
+    /**
+     * @param materia the materia to set
+     */
+    public void setMateria(Materia materia) {
         this.materia = materia;
     }
 
+    /**
+     * @return the habilitado
+     */
     public boolean isHabilitado() {
         return habilitado;
     }
 
+    /**
+     * @param habilitado the habilitado to set
+     */
     public void setHabilitado(boolean habilitado) {
         this.habilitado = habilitado;
     }
 
-    public Date getFecha_creacion() {
-        return fecha_creacion;
+    /**
+     * @return the fechaCreacion
+     */
+    public String getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
+    /**
+     * @param fechaCreacion the fechaCreacion to set
+     */
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public int getContexto() {
+    /**
+     * @return the contexto
+     */
+    public Contexto getContexto() {
         return contexto;
     }
 
-    public void setContexto(int contexto) {
+    /**
+     * @param contexto the contexto to set
+     */
+    public void setContexto(Contexto contexto) {
         this.contexto = contexto;
     }
 
-    public int getAutor() {
+    /**
+     * @return the autor
+     */
+    public Usuario getAutor() {
         return autor;
     }
 
-    public void setAutor(int autor) {
+    /**
+     * @param autor the autor to set
+     */
+    public void setAutor(Usuario autor) {
         this.autor = autor;
     }
 
-    public int getGradoDificultad() {
+    /**
+     * @return the gradoDificultad
+     */
+    public GradoDeDificultad getGradoDificultad() {
         return gradoDificultad;
     }
 
-    public void setGradoDificultad(int gradoDificultad) {
+    /**
+     * @param gradoDificultad the gradoDificultad to set
+     */
+    public void setGradoDificultad(GradoDeDificultad gradoDificultad) {
         this.gradoDificultad = gradoDificultad;
     }
 
+    /**
+     * @return the imagen
+     */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+     * @param imagen the imagen to set
+     */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
-    public int getNivelEvaluativo() {
+    /**
+     * @return the nivelEvaluativo
+     */
+    public NivelEvaluativo getNivelEvaluativo() {
         return nivelEvaluativo;
     }
 
-    public void setNivelEvaluativo(int nivelEvaluativo) {
+    /**
+     * @param nivelEvaluativo the nivelEvaluativo to set
+     */
+    public void setNivelEvaluativo(NivelEvaluativo nivelEvaluativo) {
         this.nivelEvaluativo = nivelEvaluativo;
     }
-
 }

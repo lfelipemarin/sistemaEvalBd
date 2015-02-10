@@ -12,17 +12,21 @@ package beans;
  */
 public class Respuesta {
 
-    int codigo;
-    String texto;
-    boolean correcta;
-    int codigoPregunta;
+    private int codigo;
+    private String texto;
+    private boolean correcta;
+    private Pregunta pregunta;
 
-    public int getCodigoPregunta() {
-        return codigoPregunta;
+    public Respuesta() {
+
     }
 
-    public void setCodigoPregunta(int codigoPregunta) {
-        this.codigoPregunta = codigoPregunta;
+    public Pregunta getPregunta() {
+        return pregunta;
+    }
+
+    public void setPregunta(Pregunta p) {
+        this.pregunta = p;
     }
     String imagen;
 
