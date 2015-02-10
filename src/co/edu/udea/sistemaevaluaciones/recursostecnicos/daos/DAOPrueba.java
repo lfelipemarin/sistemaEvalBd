@@ -15,6 +15,47 @@ public class DAOPrueba {
 
     public DAOPrueba() {
     }
+    
+    
+    /*
+     1. getGruposPorProfesor(usuario): Recibe un objeto Usuario (en este caso con rol de profesor) y nos retorna una colección con todos los grupos pertenecientes a él (los que él esté dictando).
+
+    hecho***** 2. getEvaluacionesPorGrupo(grupo): Recibe un objeto Grupo y retorna una colección con todas las evaluaciones que pertenezcan a este grupo.
+
+     3. getRespuestasPorEstudiantePorEvaluacion(usuario, evaluación): Recibe un objeto Usuario (en este caso con rol de estudiante) y un objeto Evaluación y retorna una lista con los objetos "Respuesta" de ese usuario a esa evaluación.
+     */
+
+    public ArrayList<Evaluacion> getEvaluacionesPorGrupo(Grupo g) {
+        ArrayList<Evaluacion> evaluaciones = new ArrayList<>();
+        ArrayList<Prueba> pruebas = getPruebasPorGrupo(g);
+
+        for (Prueba p : pruebas) {
+            evaluaciones.addAll(getEvaluacionesPorPrueba(p));
+        }
+        return evaluaciones;
+    }
+
+    public ArrayList<Evaluacion> getEvaluacionesPorPrueba(Prueba p) {
+        String sentencia = "SELECT * FROM evaluacion WHERE prueba = ?";
+        ArrayList<Evaluacion> evaluaciones = new ArrayList<>();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, p.getCodigo());
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                evaluaciones.add(getEvaluacionPorId(res.getInt("codigo")));
+            }
+            return evaluaciones;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
 
     public ArrayList<Prueba> getPruebasPorGrupo(Grupo g) {
         ArrayList<Prueba> pruebas = new ArrayList<>();
@@ -35,7 +76,7 @@ public class DAOPrueba {
                 p.setFechaAplicacion(res.getString("fecha_aplicacion"));
                 p.setFechaCreacion(res.getString("fecha_creacion"));
                 p.setGrupo(getGrupoPorId(res.getInt("grupo")));
-                p.setUsuarioProgramador(getUsuarioPorId(res.getInt("autor")));
+                p.setUsuarioProgramador(getUsuarioPorId(res.getInt("usuario_programador")));
                 pruebas.add(p);
             }
             return pruebas;
@@ -440,20 +481,7 @@ public class DAOPrueba {
         return evaluaciones;
     }
 
-    /*
-     1. getGruposPorProfesor(usuario): Recibe un objeto Usuario (en este caso con rol de profesor) y nos retorna una colección con todos los grupos pertenecientes a él (los que él esté dictando).
 
-     2. getEvaluacionesPorGrupo(grupo): Recibe un objeto Grupo y retorna una colección con todas las evaluaciones que pertenezcan a este grupo.
-
-     3. getRespuestasPorEstudiantePorEvaluacion(usuario, evaluación): Recibe un objeto Usuario (en este caso con rol de estudiante) y un objeto Evaluación y retorna una lista con los objetos "Respuesta" de ese usuario a esa evaluación.
-     */
-    /*
-     metodo hehco por peticion explicita de los compas del modulo ..
-     */
-    public ArrayList<Evaluacion> getEvaluacionesPorGrupo(Grupo g) {
-        String setenciaPrueba = "SELECT * FROM Evaluacion WHERE ";
-        return null;
-    }
 
     /*
      metodo necesario para ejecutar getPruebasPorGrupo
