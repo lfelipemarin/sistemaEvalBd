@@ -118,8 +118,8 @@ public class DAOPreguntaMauro {
                 numAtrib++;
             }
 
-            if (p.getTipo() != 0) {
-                pstm.setInt(numAtrib, p.getTipo());
+            if (p.getTipoPregunta().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getTipoPregunta().getCodigo());
                 numAtrib++;
             } else {
                 pstm.setString(numAtrib, "");
@@ -644,140 +644,140 @@ public class DAOPreguntaMauro {
      * @param c
      * @return
      */
-    public ArrayList<Pregunta> listarPreguntasOr(Pregunta p) {
-
-        String sentencia = "SELECT * FROM pregunta p WHERE codigo = ? OR"
-                + "enunciado = ? OR tipo = ? OR materia = ? OR habilitado = ? OR fecha_creacion = ? OR contexto = ? OR autor = ? OR grado_dificultad = ? OR imagen =? OR nivel_evaluativo =";
-        
-        Pregunta preguntaRetorno;
-        ArrayList<Pregunta> arregloPreguntas = new ArrayList<>();
-        try {
-            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
-            int numAtrib = 1;
-            
-            if (p.getCodigo() != 0) {
-                pstm.setInt(numAtrib, p.getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");  
-                numAtrib++;
-            }
-            
-            if (p.getEnunciado()!= null) {
-                pstm.setString(numAtrib, p.getEnunciado());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");  
-                numAtrib++;
-            }
-            
-            if (p.getTipo() != 0) {
-                pstm.setInt(numAtrib, p.getTipo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-            if (p.getMateria().getCodigo() != 0) {
-                pstm.setInt(numAtrib, p.getMateria().getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-            if (p.isHabilitado() != false) {
-                pstm.setBoolean(numAtrib, p.isHabilitado());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-            if (p.getFechaCreacion() != null) {
-                pstm.setString(numAtrib, p.getFechaCreacion());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");  //al ser fecha no se puede convertira Date a sTRING
-                numAtrib++;
-            }     
-
-            if (p.getContexto().getCodigo() != 0) {
-                pstm.setInt(numAtrib, p.getContexto().getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-             if (p.getAutor().getCodigo() != 0) {
-                pstm.setInt(numAtrib, p.getAutor().getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-
-            if (p.getGradoDificultad().getCodigo() != 0) {
-                pstm.setInt(numAtrib, p.getGradoDificultad().getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-            if (p.getImagen() != null) {
-                pstm.setString(numAtrib, p.getImagen());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-            if (p.getNivelEvaluativo().getCodigo() != 0) {
-                pstm.setString(numAtrib, p.getNivelEvaluativo().getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-
-            System.out.println("consulta :" + pstm);
-            ResultSet res = pstm.executeQuery();
-            while (res.next()) {
-                preguntaRetorno = new Pregunta();
-                preguntaRetorno.setCodigo(res.getInt("codigo"));
-                preguntaRetorno.setEnunciado(res.getString("enunciado"));
-                preguntaRetorno.setTipo(res.getInt("tipo"));
-                preguntaRetorno.setMateria(getMateriaPorId(res.getInt("materia")));
-                preguntaRetorno.setHabilitado(res.getBoolean("habilitado"));
-                preguntaRetorno.setFechaCreacion(res.getString("fecha_creacion"));
-                preguntaRetorno.setContexto(getContextoPorId(res.getInt("contexto")));
-                preguntaRetorno.setAutor(getUsuarioPorId(res.getInt("autor")));
-                preguntaRetorno.setGradoDificultad(getGradoDeDificultadPorId(res.getInt("grado_dificultad")));
-                preguntaRetorno.setImagen(res.getString("imagen"));
-                preguntaRetorno.setNivelEvaluativo(getNivelEvaluativoPorId(res.getInt("nivel_evaluativo")));
-                
-                
-
-                arregloPreguntas.add(preguntaRetorno);
-                //Prueba de impresion en consola............
-                System.out.println("fecha de creacion: " + res.getString("fecha_creacion"));
-                System.out.println("Tipo: " + res.getString("tipo"));
-                System.out.println("Contexto: " + res.getString("contexto"));
-                System.out.println("Enunciado: " + res.getString("enunciado"));
-                System.out.println("Grado de Dificultad: " + res.getString("grado_dificultad"));
-                System.out.println("Estado: " + res.getString("habilitado"));
-            }
-            pstm.close();
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        return arregloPreguntas;
-    }
+//    public ArrayList<Pregunta> listarPreguntasOr(Pregunta p) {
+//
+//        String sentencia = "SELECT * FROM pregunta p WHERE codigo = ? OR"
+//                + "enunciado = ? OR tipo = ? OR materia = ? OR habilitado = ? OR fecha_creacion = ? OR contexto = ? OR autor = ? OR grado_dificultad = ? OR imagen =? OR nivel_evaluativo =";
+//        
+//        Pregunta preguntaRetorno;
+//        ArrayList<Pregunta> arregloPreguntas = new ArrayList<>();
+//        try {
+//            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+//            int numAtrib = 1;
+//            
+//            if (p.getCodigo() != 0) {
+//                pstm.setInt(numAtrib, p.getCodigo());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");  
+//                numAtrib++;
+//            }
+//            
+//            if (p.getEnunciado()!= null) {
+//                pstm.setString(numAtrib, p.getEnunciado());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");  
+//                numAtrib++;
+//            }
+//            
+//            if (p.getTipoPregunta().getCodigo() != 0) {
+//                pstm.setInt(numAtrib, p.getTipoPregunta().getCodigo());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//            
+//            if (p.getMateria().getCodigo() != 0) {
+//                pstm.setInt(numAtrib, p.getMateria().getCodigo());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//            
+//            if (p.isHabilitado() != false) {
+//                pstm.setBoolean(numAtrib, p.isHabilitado());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//            
+//            if (p.getFechaCreacion() != null) {
+//                pstm.setString(numAtrib, p.getFechaCreacion());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");  //al ser fecha no se puede convertira Date a sTRING
+//                numAtrib++;
+//            }     
+//
+//            if (p.getContexto().getCodigo() != 0) {
+//                pstm.setInt(numAtrib, p.getContexto().getCodigo());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//            
+//             if (p.getAutor().getCodigo() != 0) {
+//                pstm.setInt(numAtrib, p.getAutor().getCodigo());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//
+//            if (p.getGradoDificultad().getCodigo() != 0) {
+//                pstm.setInt(numAtrib, p.getGradoDificultad().getCodigo());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//            
+//            if (p.getImagen() != null) {
+//                pstm.setString(numAtrib, p.getImagen());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//            
+//            if (p.getNivelEvaluativo().getCodigo() != 0) {
+//                pstm.setInt(numAtrib, p.getNivelEvaluativo().getCodigo());
+//                numAtrib++;
+//            } else {
+//                pstm.setString(numAtrib, "%");
+//                numAtrib++;
+//            }
+//            
+//
+//            System.out.println("consulta :" + pstm);
+//            ResultSet res = pstm.executeQuery();
+//            while (res.next()) {
+//                preguntaRetorno = new Pregunta();
+//                preguntaRetorno.setCodigo(res.getInt("codigo"));
+//                preguntaRetorno.setEnunciado(res.getString("enunciado"));
+//                preguntaRetorno.setTipoPregunta(getTipoPreguntaPorId(res.getInt("tipo")));
+//                preguntaRetorno.setMateria(getMateriaPorId(res.getInt("materia")));
+//                preguntaRetorno.setHabilitado(res.getBoolean("habilitado"));
+//                preguntaRetorno.setFechaCreacion(res.getString("fecha_creacion"));
+//                preguntaRetorno.setContexto(getContextoPorId(res.getInt("contexto")));
+//                preguntaRetorno.setAutor(getUsuarioPorId(res.getInt("autor")));
+//                preguntaRetorno.setGradoDificultad(getGradoDeDificultadPorId(res.getInt("grado_dificultad")));
+//                preguntaRetorno.setImagen(res.getString("imagen"));
+//                preguntaRetorno.setNivelEvaluativo(getNivelEvaluativoPorId(res.getInt("nivel_evaluativo")));
+//                
+//                
+//
+//                arregloPreguntas.add(preguntaRetorno);
+//                //Prueba de impresion en consola............
+//                System.out.println("fecha de creacion: " + res.getString("fecha_creacion"));
+//                System.out.println("Tipo: " + res.getString("tipo"));
+//                System.out.println("Contexto: " + res.getString("contexto"));
+//                System.out.println("Enunciado: " + res.getString("enunciado"));
+//                System.out.println("Grado de Dificultad: " + res.getString("grado_dificultad"));
+//                System.out.println("Estado: " + res.getString("habilitado"));
+//            }
+//            pstm.close();
+//
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
+//        return arregloPreguntas;
+//    }
 public Usuario getUsuarioPorId(int id) {
         String sentencia = "SELECT * FROM usuario WHERE codigo = ?";
         Usuario u = new Usuario();
