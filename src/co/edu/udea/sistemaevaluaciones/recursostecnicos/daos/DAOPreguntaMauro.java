@@ -62,6 +62,109 @@ public class DAOPreguntaMauro {
             System.out.println(e);
         }
     }
+    
+    public void registrarPregunta(Pregunta p) {
+        String sentencia = "INSERT INTO pregunta values(?,?,?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            if (p.getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getEnunciado() != null) {
+                pstm.setString(numAtrib, p.getEnunciado());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getTipo() != 0) {
+                pstm.setInt(numAtrib, p.getTipo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getMateria().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getMateria().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+            
+            if (p.isHabilitado() != false ) {
+                pstm.setBoolean(numAtrib, p.isHabilitado());
+                numAtrib++;
+            } else {
+                pstm.setBoolean(numAtrib, false);
+                numAtrib++;
+            }
+             
+            if (p.getFechaCreacion() != null) {
+                pstm.setString(numAtrib, p.getFechaCreacion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+             
+            if (p.getContexto().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getContexto().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+             
+            if (p.getAutor().getCodigo()!= 0) {
+                pstm.setInt(numAtrib, p.getAutor().getCodigo());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+            if (p.getGradoDificultad().getCodigo()!= 0) {
+                pstm.setInt(numAtrib, p.getGradoDificultad().getCodigo());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+            if (p.getImagen() != null) {
+                pstm.setString(numAtrib, p.getImagen());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+              
+            if (p.getNivelEvaluativo()!= null) {
+                pstm.setString(numAtrib, p.getNivelEvaluativo().toString()); // Si es a String el campo en la DB es INT
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public void registrarRespuesta(Respuesta r) {
         String sentencia = "INSERT INTO respuesta values(?,?,?,?,?)";
