@@ -16,6 +16,61 @@ public class DAOPrueba {
     public DAOPrueba() {
     }
 
+    public void registrarCuestionario(Cuestionario c) {
+        String sentencia = "INSERT INTO cuestionario values(?,?,?,?,?)";
+
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            if (c.getCodigo() != 0) {
+                pstm.setInt(numAtrib, c.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+
+            if (c.getNombre() != null) {
+                pstm.setString(numAtrib, c.getNombre());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+
+            if (c.getNumeroPreguntas() != 0) {
+                pstm.setInt(numAtrib, c.getNumeroPreguntas());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+
+            if (c.getFechaCreacion() != null) {
+                pstm.setString(numAtrib, c.getFechaCreacion());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+
+            if (c.getAutor() != null) {
+                pstm.setInt(numAtrib, c.getAutor().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     /**
      *
      * @param evaluacion

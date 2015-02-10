@@ -5,10 +5,9 @@
  */
 package sistemaEvaluaciones;
 
-import beans.AreaDeConocimiento;
-import beans.Pregunta;
-import beans.Respuesta;
-import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOPreguntaMauro;
+import beans.Cuestionario;
+import beans.Usuario;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOPrueba;
 import java.io.IOException;
 
 /**
@@ -88,15 +87,26 @@ public class Sigeon {
 //        p.setCodigo(1);
 //        r.setPregunta(p);
 //        r.setTexto("texto rta 1 preg 1");
-        AreaDeConocimiento ac = new AreaDeConocimiento();
-        AreaDeConocimiento ac1 = new AreaDeConocimiento();
-        ac1.setCodigo(1);
-        ac.setCodigo(3);
-        ac.setDescripcion("desc ac tres");
-        ac.setNombre("nom ac tres");
-//        ac.setAreaPadre(ac1);
-        DAOPreguntaMauro daopm = new DAOPreguntaMauro();
-        daopm.registrarAreaConocimiento(ac);
+//        AreaDeConocimiento ac = new AreaDeConocimiento();
+//        AreaDeConocimiento ac1 = new AreaDeConocimiento();
+//        ac1.setCodigo(1);
+//        ac.setCodigo(3);
+//        ac.setDescripcion("desc ac tres");
+//        ac.setNombre("nom ac tres");
+////        ac.setAreaPadre(ac1);
+//        DAOPreguntaMauro daopm = new DAOPreguntaMauro();
+//        daopm.registrarAreaConocimiento(ac);
+        
+        Cuestionario c = new Cuestionario();
+        Usuario u = new Usuario();
+        u.setCodigo(1);
+        c.setAutor(u);
+        c.setCodigo(2);
+        c.setFechaCreacion("2014-01-01 00:00:00");
+        c.setNombre("nom cues dos");
+        c.setNumeroPreguntas(1);
+        DAOPrueba daop = new DAOPrueba();
+        daop.registrarCuestionario(c);
 
     }
 

@@ -12,52 +12,84 @@ import java.sql.Date;
  * @author eaagudelr
  */
 public class Cuestionario {
-    
-    int codigo;
-    String nombre;
-    int numero_preguntas;
-    Date fecha_creacion;
-    int autor;
 
+    private int codigo;
+    private String nombre;
+    private int numeroPreguntas;
+    private String fechaCreacion;
+    private Usuario autor;
+
+    public Cuestionario() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * @return the nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * @param nombre the nombre to set
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public int getNumero_preguntas() {
-        return numero_preguntas;
+    /**
+     * @return the numeroPreguntas
+     */
+    public int getNumeroPreguntas() {
+        return numeroPreguntas;
     }
 
-    public void setNumero_preguntas(int numero_preguntas) {
-        this.numero_preguntas = numero_preguntas;
+    /**
+     * @param numeroPreguntas the numeroPreguntas to set
+     */
+    public void setNumeroPreguntas(int numeroPreguntas) {
+        this.numeroPreguntas = numeroPreguntas;
     }
 
-    public Date getFecha_creacion() {
-        return fecha_creacion;
+    /**
+     * @return the fechaCreacion
+     */
+    public String getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
-        this.fecha_creacion = fecha_creacion;
+    /**
+     * @param fechaCreacion the fechaCreacion to set
+     */
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
-    public int getAutor() {
+    /**
+     * @return the autor
+     */
+    public Usuario getAutor() {
         return autor;
     }
 
-    public void setAutor(int autor) {
+    /**
+     * @param autor the autor to set
+     */
+    public void setAutor(Usuario autor) {
         this.autor = autor;
     }
-    
-    
 }
