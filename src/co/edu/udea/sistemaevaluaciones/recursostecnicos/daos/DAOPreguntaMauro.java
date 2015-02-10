@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import java.sql.ResultSet;
 import beans.*;
+import java.util.ArrayList;
 
 /**
  * @author FelipeWin
@@ -319,10 +320,11 @@ public class DAOPreguntaMauro {
      * @param c
      * @return
      */
-    public Contexto buscarContextoOR(Contexto c) {
+    public ArrayList <Contexto> buscarContextoOR(Contexto c) {
         String sentencia = "SELECT * FROM contexto c WHERE codigo = ? OR "
                 + "enunciado LIKE ? OR imagen = ? OR fecha_creacion = ? OR autor = ? OR titulo = ?";
-
+           Contexto contextoRetorno;
+        ArrayList<Contexto> arregloContexto = new ArrayList<>();
         try {
             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
             int numAtrib = 1;
@@ -378,6 +380,21 @@ public class DAOPreguntaMauro {
             System.out.println("consulta :" + pstm);
             ResultSet res = pstm.executeQuery();
             while (res.next()) {
+                
+                contextoRetorno = new Contexto();
+
+                contextoRetorno.setCodigo(res.getInt("codigo"));
+                contextoRetorno.setEnunciado(res.getString("enunciado"));
+                contextoRetorno.setImagen(res.getString("imagen"));
+                contextoRetorno.setFechaCreacion(res.getString("fecha_creacion"));
+//                contextoRetorno.setAutor(res.getInt("autor"));
+                contextoRetorno.setTitulo(res.getString("titulo"));
+
+               arregloContexto.add(contextoRetorno);
+                
+                
+                
+                //Prueba de impresion en consola
                 System.out.println("Codigo: " + res.getString("codigo"));
                 System.out.println("enunciado: " + res.getString("enunciado"));
                 System.out.println("fecha Creacion: " + res.getString("fecha_creacion"));
