@@ -17,12 +17,34 @@ public class DAOPrueba {
     }
 
     /*
-     1. getGruposPorProfesor(usuario): Recibe un objeto Usuario (en este caso con rol de profesor) y nos retorna una colección con todos los grupos pertenecientes a él (los que él esté dictando).
+     hehco***** 1. getGruposPorProfesor(usuario): Recibe un objeto Usuario (en este caso con rol de profesor) y nos retorna una colección con todos los grupos pertenecientes a él (los que él esté dictando).
 
      hecho***** 2. getEvaluacionesPorGrupo(grupo): Recibe un objeto Grupo y retorna una colección con todas las evaluaciones que pertenezcan a este grupo.
 
-     3. getRespuestasPorEstudiantePorEvaluacion(usuario, evaluación): Recibe un objeto Usuario (en este caso con rol de estudiante) y un objeto Evaluación y retorna una lista con los objetos "Respuesta" de ese usuario a esa evaluación.
+     hehco***** 3. getRespuestasPorEstudiantePorEvaluacion(usuario, evaluación): Recibe un objeto Usuario (en este caso con rol de estudiante) y un objeto Evaluación y retorna una lista con los objetos "Respuesta" de ese usuario a esa evaluación.
      */
+    public ArrayList<Respuesta> getRespuestasPorEstudiantePorEvaluacion(Usuario u, Evaluacion e) {
+        String sentencia = "SELECT * FROM respuesta_estudiante WHERE evaluacion = ?";
+        ArrayList<Respuesta> respuestas = new ArrayList<>();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, e.getCodigo());
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                respuestas.add(getRespuestaPorId(res.getInt("respuesta")));
+            }
+            return respuestas;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
+
     public ArrayList<Grupo> getGruposPorProfesor(Usuario u) {
         String sentencia = "SELECT * FROM grupo WHERE profesor = ?";
         ArrayList<Grupo> grupos = new ArrayList<>();
