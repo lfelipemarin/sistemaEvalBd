@@ -5,74 +5,119 @@
  */
 package beans;
 
-import java.sql.Date;
-
 /**
  *
  * @author eaagudelr
  */
 public class Prueba {
-    int codigo;
-    Date fechaCreacion;
-    int cuestionario;
-    Date fechaAplicacion;
-    int duracion;
-    int grupo;
-    int usuarioProgramador;
 
+    private int codigo;
+    private String fechaCreacion;
+    private Cuestionario cuestionario;
+    private String fechaAplicacion;
+    private int duracion;
+    private Grupo grupo;
+    private Usuario usuarioProgramador;
+
+    public Prueba() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public Date getFechaCreacion() {
+    /**
+     * @return the fechaCreacion
+     */
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    /**
+     * @param fechaCreacion the fechaCreacion to set
+     */
+    public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public int getCuestionario() {
+    /**
+     * @return the cuestionario
+     */
+    public Cuestionario getCuestionario() {
         return cuestionario;
     }
 
-    public void setCuestionario(int cuestionario) {
+    /**
+     * @param cuestionario the cuestionario to set
+     */
+    public void setCuestionario(Cuestionario cuestionario) {
         this.cuestionario = cuestionario;
     }
 
-    public Date getFechaAplicacion() {
+    /**
+     * @return the fechaAplicacion
+     */
+    public String getFechaAplicacion() {
         return fechaAplicacion;
     }
 
-    public void setFechaAplicacion(Date fechaAplicacion) {
+    /**
+     * @param fechaAplicacion the fechaAplicacion to set
+     */
+    public void setFechaAplicacion(String fechaAplicacion) {
         this.fechaAplicacion = fechaAplicacion;
     }
 
+    /**
+     * @return the duracion
+     */
     public int getDuracion() {
         return duracion;
     }
 
+    /**
+     * @param duracion the duracion to set
+     */
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
 
-    public int getGrupo() {
+    /**
+     * @return the grupo
+     */
+    public Grupo getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(int grupo) {
+    /**
+     * @param grupo the grupo to set
+     */
+    public void setGrupo(Grupo grupo) {
         this.grupo = grupo;
     }
 
-    public int getUsuarioProgramador() {
+    /**
+     * @return the usuarioProgramador
+     */
+    public Usuario getUsuarioProgramador() {
         return usuarioProgramador;
     }
 
-    public void setUsuarioProgramador(int usuarioProgramador) {
+    /**
+     * @param usuarioProgramador the usuarioProgramador to set
+     */
+    public void setUsuarioProgramador(Usuario usuarioProgramador) {
         this.usuarioProgramador = usuarioProgramador;
     }
 }

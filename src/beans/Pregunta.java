@@ -13,7 +13,7 @@ public class Pregunta {
 
     private int codigo;
     private String enunciado;
-    private int tipo;
+    private TipoPregunta tipoPregunta;
     private Materia materia;
     private boolean habilitado;
     private String fechaCreacion;
@@ -56,17 +56,17 @@ public class Pregunta {
     }
 
     /**
-     * @return the tipo
+     * @return the tipoPregunta
      */
-    public int getTipo() {
-        return tipo;
+    public TipoPregunta getTipoPregunta() {
+        return tipoPregunta;
     }
 
     /**
-     * @param tipo the tipo to set
+     * @param tipoPregunta the tipoPregunta to set
      */
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
+    public void setTipoPregunta(TipoPregunta tipoPregunta) {
+        this.tipoPregunta = tipoPregunta;
     }
 
     /**
