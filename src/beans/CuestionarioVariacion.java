@@ -5,48 +5,74 @@
  */
 package beans;
 
-import java.sql.Date;
-
 /**
  *
  * @author eaagudelr
  */
 public class CuestionarioVariacion {
 
+    private int codigo;
+    private Cuestionario cuestionarioPadre;
+    private String fechaCreacion;
+    private Usuario autor;
+
+    public CuestionarioVariacion() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public int getCuestionarioPadre() {
+    /**
+     * @return the cuestionarioPadre
+     */
+    public Cuestionario getCuestionarioPadre() {
         return cuestionarioPadre;
     }
 
-    public void setCuestionarioPadre(int cuestionarioPadre) {
+    /**
+     * @param cuestionarioPadre the cuestionarioPadre to set
+     */
+    public void setCuestionarioPadre(Cuestionario cuestionarioPadre) {
         this.cuestionarioPadre = cuestionarioPadre;
     }
 
-    public Date getFechaCreacion() {
+    /**
+     * @return the fechaCreacion
+     */
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    /**
+     * @param fechaCreacion the fechaCreacion to set
+     */
+    public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public int getAutor() {
+    /**
+     * @return the autor
+     */
+    public Usuario getAutor() {
         return autor;
     }
 
-    public void setAutor(int autor) {
+    /**
+     * @param autor the autor to set
+     */
+    public void setAutor(Usuario autor) {
         this.autor = autor;
     }
-    
-    int codigo;
-    int cuestionarioPadre;
-    Date fechaCreacion;
-    int autor;
 }

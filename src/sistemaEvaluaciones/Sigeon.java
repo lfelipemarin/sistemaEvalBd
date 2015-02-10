@@ -5,7 +5,8 @@
  */
 package sistemaEvaluaciones;
 
-import beans.Cuestionario;
+import beans.Evaluacion;
+import beans.Grupo;
 import beans.Usuario;
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOPrueba;
 import java.io.IOException;
@@ -96,17 +97,28 @@ public class Sigeon {
 ////        ac.setAreaPadre(ac1);
 //        DAOPreguntaMauro daopm = new DAOPreguntaMauro();
 //        daopm.registrarAreaConocimiento(ac);
-        
-        Cuestionario c = new Cuestionario();
-        Usuario u = new Usuario();
-        u.setCodigo(1);
-        c.setAutor(u);
-        c.setCodigo(2);
-        c.setFechaCreacion("2014-01-01 00:00:00");
-        c.setNombre("nom cues dos");
-        c.setNumeroPreguntas(1);
+//        Cuestionario c = new Cuestionario();
+//        Usuario u = new Usuario();
+//        u.setCodigo(1);
+//        c.setAutor(u);
+//        c.setCodigo(2);
+//        c.setFechaCreacion("2014-01-01 00:00:00");
+//        c.setNombre("nom cues dos");
+//        c.setNumeroPreguntas(1);
+//        DAOPrueba daop = new DAOPrueba();
+//        daop.registrarCuestionario(c);
+//        Usuario u = new Usuario();
+//        u.setCodigo(1);
+//        DAOPrueba daop = new DAOPrueba();
+//        daop.getUsuarioOr(u);
         DAOPrueba daop = new DAOPrueba();
-        daop.registrarCuestionario(c);
+        Grupo g = new Grupo();
+        g.setCodigo(1);
+        Usuario u = new Usuario();
+        u.setCodigo(3);
+        Evaluacion e = new Evaluacion();
+        e.setCodigo(1);
+//        daop.getRespuestasPorEstudiantePorEvaluacion(null, e);
 
     }
 

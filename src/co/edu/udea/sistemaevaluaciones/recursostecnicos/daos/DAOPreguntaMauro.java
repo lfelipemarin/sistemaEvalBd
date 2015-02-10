@@ -63,7 +63,7 @@ public class DAOPreguntaMauro {
             System.out.println(e);
         }
     }
-    
+
     public void registrarAreaConocimientoDePregunta(AreaDeConocimiento ac, Pregunta p) {
         String sentencia = "INSERT INTO area_conocimiento_x_pregunta values(?,?)";
 
@@ -94,7 +94,7 @@ public class DAOPreguntaMauro {
             System.out.println(e);
         }
     }
-    
+
     public void registrarPregunta(Pregunta p) {
         String sentencia = "INSERT INTO pregunta values(?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -133,15 +133,15 @@ public class DAOPreguntaMauro {
                 pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-            
-            if (p.isHabilitado() != false ) {
+
+            if (p.isHabilitado() != false) {
                 pstm.setBoolean(numAtrib, p.isHabilitado());
                 numAtrib++;
             } else {
                 pstm.setBoolean(numAtrib, false);
                 numAtrib++;
             }
-             
+
             if (p.getFechaCreacion() != null) {
                 pstm.setString(numAtrib, p.getFechaCreacion());
                 numAtrib++;
@@ -149,7 +149,7 @@ public class DAOPreguntaMauro {
                 pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-             
+
             if (p.getContexto().getCodigo() != 0) {
                 pstm.setInt(numAtrib, p.getContexto().getCodigo());
                 numAtrib++;
@@ -157,23 +157,23 @@ public class DAOPreguntaMauro {
                 pstm.setNull(numAtrib, java.sql.Types.NULL);
                 numAtrib++;
             }
-             
-            if (p.getAutor().getCodigo()!= 0) {
+
+            if (p.getAutor().getCodigo() != 0) {
                 pstm.setInt(numAtrib, p.getAutor().getCodigo());
                 numAtrib++;
             } else {
-                  pstm.setString(numAtrib, "");
+                pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-               
-            if (p.getGradoDificultad().getCodigo()!= 0) {
+
+            if (p.getGradoDificultad().getCodigo() != 0) {
                 pstm.setInt(numAtrib, p.getGradoDificultad().getCodigo());
                 numAtrib++;
             } else {
-                  pstm.setString(numAtrib, "");
+                pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-               
+
             if (p.getImagen() != null) {
                 pstm.setString(numAtrib, p.getImagen());
                 numAtrib++;
@@ -181,15 +181,15 @@ public class DAOPreguntaMauro {
                 pstm.setNull(numAtrib, java.sql.Types.NULL);
                 numAtrib++;
             }
-              
-            if (p.getNivelEvaluativo()!= null) {
+
+            if (p.getNivelEvaluativo() != null) {
                 pstm.setString(numAtrib, p.getNivelEvaluativo().toString()); // Si es a String el campo en la DB es INT
                 numAtrib++;
             } else {
-                  pstm.setString(numAtrib, "");
+                pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-               
+
             System.out.println("consulta :" + pstm);
             pstm.execute();
             pstm.close();
@@ -252,7 +252,6 @@ public class DAOPreguntaMauro {
         }
     }
 
-            
     public void registrarContexto(Contexto c) {
         String sentencia = "INSERT INTO contexto values(?,?,?,?,?,?)";
         try {
@@ -315,12 +314,13 @@ public class DAOPreguntaMauro {
         }
 
     }
-public void registrarCuestionario(Cuestionario cn) {
+
+    public void registrarCuestionario(Cuestionario cn) {
         String sentencia = "INSERT INTO cuestionario values(?,?,?,?,?)";
         try {
             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
-            int numAtrib = 1; 
-            
+            int numAtrib = 1;
+
             if (cn.getCodigo() != 0) {
                 pstm.setInt(numAtrib, cn.getCodigo());
                 numAtrib++;
@@ -352,17 +352,15 @@ public void registrarCuestionario(Cuestionario cn) {
                 pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-            
-                         
-            if (cn.getAutor().getCodigo()!= 0) {
+
+            if (cn.getAutor().getCodigo() != 0) {
                 pstm.setInt(numAtrib, cn.getAutor().getCodigo());
                 numAtrib++;
             } else {
-                  pstm.setString(numAtrib, "");
+                pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-               
-           
+
             System.out.println("consulta :" + pstm);
             pstm.execute();
             pstm.close();
@@ -371,119 +369,15 @@ public void registrarCuestionario(Cuestionario cn) {
         }
     }
 
-public void registrarCuestionarioVariaCion(CuestionarioVariacion cn) {
-        String sentencia = "INSERT INTO cuestionario values(?,?,?,?)";
-        try {
-            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
-            int numAtrib = 1; 
-            
-            if (cn.getCodigo() != 0) {
-                pstm.setInt(numAtrib, cn.getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-
-            if (cn.getCuestionarioPadre() != 0) {
-                pstm.setInt(numAtrib, cn.getCuestionarioPadre());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-
-            
-            if (cn.getFechaCreacion() != null) {
-                pstm.setString(numAtrib, cn.getFechaCreacion());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-            
-                         
-            if (cn.getAutor().getCodigo()!= 0) {
-                pstm.setInt(numAtrib, cn.getAutor().getCodigo());
-                numAtrib++;
-            } else {
-                  pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-               
-           
-            System.out.println("consulta :" + pstm);
-            pstm.execute();
-            pstm.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
-        String sentencia = "INSERT INTO cuestionario values(?,?,?,?,?)";
-        try {
-            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
-            int numAtrib = 1; 
-            
-            if (pc.getCodigo() != 0) {
-                pstm.setInt(numAtrib, pc.getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-
-            if (pc.getCuestionario() != 0) {
-                pstm.setInt(numAtrib, pc.getCuestionario());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-
-            
-            if (pc.getPregunta() != 0) {
-                pstm.setInt(numAtrib, pc.getPregunta());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-            
-                         
-            if (pc.getPorcentaje()!= 0) {
-                pstm.setDouble(numAtrib, pc.getPorcentaje());
-                numAtrib++;
-            } else {
-                  pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-            
-            if (pc.getIndice()!= 0) {
-                pstm.setInt(numAtrib, pc.getIndice());
-                numAtrib++;
-            } else {
-                  pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-           
-            System.out.println("consulta :" + pstm);
-            pstm.execute();
-            pstm.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
     /**
      *
      * @param c
      * @return
      */
-    public ArrayList <Contexto> buscarContextoOR(Contexto c) {
+    public ArrayList<Contexto> buscarContextoOR(Contexto c) {
         String sentencia = "SELECT * FROM contexto c WHERE codigo = ? OR "
                 + "enunciado LIKE ? OR imagen = ? OR fecha_creacion = ? OR autor = ? OR titulo = ?";
-           Contexto contextoRetorno;
+        Contexto contextoRetorno;
         ArrayList<Contexto> arregloContexto = new ArrayList<>();
         try {
             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
@@ -540,7 +434,7 @@ public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
             System.out.println("consulta :" + pstm);
             ResultSet res = pstm.executeQuery();
             while (res.next()) {
-                
+
                 contextoRetorno = new Contexto();
 
                 contextoRetorno.setCodigo(res.getInt("codigo"));
@@ -550,8 +444,8 @@ public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
                 contextoRetorno.setAutor(getUsuarioPorId(res.getInt("autor")));
                 contextoRetorno.setTitulo(res.getString("titulo"));
 
-               arregloContexto.add(contextoRetorno);
-                                        
+                arregloContexto.add(contextoRetorno);
+
                 //Prueba de impresion en consola
                 System.out.println("Codigo: " + res.getString("codigo"));
                 System.out.println("enunciado: " + res.getString("enunciado"));
@@ -567,79 +461,11 @@ public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
         }
         return arregloContexto;
     }
-    
-    public ArrayList<AreaDeConocimiento> listarAreaDeConocimientos(AreaDeConocimiento a) {
 
-        String sentencia = "SELECT * FROM area_conocimiento a WHERE codigo = ? OR"
-                +"nombre = ? OR descripcion = ? OR area_padre = ?";
-        AreaDeConocimiento areasRetorno;
-        ArrayList<AreaDeConocimiento> arregloAreas = new ArrayList<>();
-        try {
-             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
-            int numAtrib = 1;
-            
-            if (a.getCodigo() != 0) {
-                pstm.setInt(numAtrib, a.getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-            if (a.getNombre() != null) {
-                pstm.setString(numAtrib, a.getNombre());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-            
-            if (a.getDescripcion() != null) {
-                pstm.setString(numAtrib, a.getDescripcion());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-
-            if (a.getAreaPadre().getCodigo() != 0) {
-                pstm.setInt(numAtrib,a.getAreaPadre().getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "%");
-                numAtrib++;
-            }
-
-            System.out.println("consulta :" + pstm);
-            ResultSet res = pstm.executeQuery();
-            while (res.next()) {
-                areasRetorno = new AreaDeConocimiento();
-
-                areasRetorno.setCodigo(res.getInt("codigo"));
-                areasRetorno.setNombre(res.getString("nombre"));
-                areasRetorno.setDescripcion(res.getString("descripcion"));
-                areasRetorno.setAreaPadre(getAreaDeConocimientoPorId(res.getInt("area_padre")));
-
-                arregloAreas.add(areasRetorno);
-                //Prueba de impresion en consola............
-                System.out.println("codigo: " + res.getInt("codigo"));
-                System.out.println("nombre: " + res.getString("nombre"));
-                System.out.println("Descripcio: " + res.getString("descripcion"));
-                System.out.println("Area padre: " + res.getInt("area_padre"));
-            }
-            pstm.close();
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        return arregloAreas;
-    }
 
 //	public <Collection>Pregunta listarPreguntas(){
 //		return null;
 //	}
-
-
 //	/**
 //	 * 
 //	 * @param area
@@ -700,7 +526,6 @@ public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
 //	 * 
 //	 * @param pregunta
 //	 */
-
 //    public void guardarPregunta(Pregunta p, ConexionDb conn) {
 //        p.setCodigo(10);
 //        p.setEnunciado("El enunciado 3");
@@ -785,7 +610,6 @@ public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
 //        }
 //        return arregloAreas;
 //    }
-
 //	public <Collection>Pregunta listarPreguntas(){
 //		return null;
 //	}
@@ -938,7 +762,7 @@ public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
 //        }
 //        return arregloPreguntas;
 //    }
-public Usuario getUsuarioPorId(int id) {
+    public Usuario getUsuarioPorId(int id) {
         String sentencia = "SELECT * FROM usuario WHERE codigo = ?";
         Usuario u = new Usuario();
         try {
@@ -964,7 +788,7 @@ public Usuario getUsuarioPorId(int id) {
         }
     }
 
-public Rol getRolPorId(int id) {
+    public Rol getRolPorId(int id) {
         String sentencia = "SELECT * FROM rol WHERE codigo = ?";
         Rol rol = new Rol();
         try {
@@ -988,7 +812,7 @@ public Rol getRolPorId(int id) {
 
     }
 
-public AreaDeConocimiento getAreaDeConocimientoPorId(int id) {
+    public AreaDeConocimiento getAreaDeConocimientoPorId(int id) {
         String sentencia = "SELECT * FROM area_conocimiento WHERE codigo = ?";
         AreaDeConocimiento ac = new AreaDeConocimiento();
         try {
@@ -1011,7 +835,8 @@ public AreaDeConocimiento getAreaDeConocimientoPorId(int id) {
             return null;
         }
     }
-public Pregunta getPreguntaPorId(int id) {
+
+    public Pregunta getPreguntaPorId(int id) {
         String sentencia = "SELECT * FROM pregunta WHERE codigo = ?";
         Pregunta p = new Pregunta();
         try {
@@ -1041,7 +866,8 @@ public Pregunta getPreguntaPorId(int id) {
             return null;
         }
     }
-public Contexto getContextoPorId(int id) {
+
+    public Contexto getContextoPorId(int id) {
         String sentencia = "SELECT * FROM contexto WHERE codigo = ?";
         Contexto c = new Contexto();
         try {
@@ -1067,7 +893,8 @@ public Contexto getContextoPorId(int id) {
             return null;
         }
     }
-public GradoDeDificultad getGradoDeDificultadPorId(int id) {
+
+    public GradoDeDificultad getGradoDeDificultadPorId(int id) {
         String sentencia = "SELECT * FROM grado_dificultad WHERE codigo = ?";
         GradoDeDificultad gd = new GradoDeDificultad();
         try {
@@ -1091,7 +918,7 @@ public GradoDeDificultad getGradoDeDificultadPorId(int id) {
         }
     }
 
-public TipoPregunta getTipoPreguntaPorId(int id) {
+    public TipoPregunta getTipoPreguntaPorId(int id) {
         String sentencia = "SELECT * FROM tipo_pregunta WHERE codigo = ?";
         TipoPregunta tp = new TipoPregunta();
         try {
@@ -1137,7 +964,7 @@ public TipoPregunta getTipoPreguntaPorId(int id) {
             return null;
         }
     }
-    
+
     public Materia getMateriaPorId(int id) {
         String sentencia = "SELECT * FROM materia WHERE codigo = ?";
         Materia m = new Materia();

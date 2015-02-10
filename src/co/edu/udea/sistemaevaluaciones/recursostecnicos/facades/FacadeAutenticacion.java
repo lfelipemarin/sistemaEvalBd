@@ -6,12 +6,21 @@
 package co.edu.udea.sistemaevaluaciones.recursostecnicos.facades;
 
 import beans.Usuario;
+import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOUsuarioFinal;
 
 /**
  *
  * @author FelipeWin
  */
-public interface FacadeAutenticacion {
+public class FacadeAutenticacion {
 
-    public void getUsuario(Usuario usuario);
+    public FacadeAutenticacion() {
+
+    }
+
+    public Usuario getUsuario(Usuario usuario) {
+        DAOUsuarioFinal dAOUsuarioFinal = new DAOUsuarioFinal();
+        return dAOUsuarioFinal.getUsuario(usuario);
+
+    }
 }
