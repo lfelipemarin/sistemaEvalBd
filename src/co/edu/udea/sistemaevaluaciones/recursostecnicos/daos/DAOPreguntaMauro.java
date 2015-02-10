@@ -251,61 +251,7 @@ public class DAOPreguntaMauro {
             System.out.println(e);
         }
     }
-public void registrarCuestionario(Cuestionario cn) {
-        String sentencia = "INSERT INTO cuestionario values(?,?,?,?,?)";
-        try {
-            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
-            int numAtrib = 1; 
-            
-            if (cn.getCodigo() != 0) {
-                pstm.setInt(numAtrib, cn.getCodigo());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
 
-            if (cn.getNombre() != null) {
-                pstm.setString(numAtrib, cn.getNombre());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-
-            if (cn.getNumeroPreguntas() != 0) {
-                pstm.setInt(numAtrib, cn.getNumeroPreguntas());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-
-            if (cn.getFechaCreacion() != null) {
-                pstm.setString(numAtrib, cn.getFechaCreacion());
-                numAtrib++;
-            } else {
-                pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-            
-                         
-            if (cn.getAutor().getCodigo()!= 0) {
-                pstm.setInt(numAtrib, cn.getAutor().getCodigo());
-                numAtrib++;
-            } else {
-                  pstm.setString(numAtrib, "");
-                numAtrib++;
-            }
-               
-           
-            System.out.println("consulta :" + pstm);
-            pstm.execute();
-            pstm.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
             
     public void registrarContexto(Contexto c) {
         String sentencia = "INSERT INTO contexto values(?,?,?,?,?,?)";
@@ -369,7 +315,166 @@ public void registrarCuestionario(Cuestionario cn) {
         }
 
     }
+public void registrarCuestionario(Cuestionario cn) {
+        String sentencia = "INSERT INTO cuestionario values(?,?,?,?,?)";
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1; 
+            
+            if (cn.getCodigo() != 0) {
+                pstm.setInt(numAtrib, cn.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
 
+            if (cn.getNombre() != null) {
+                pstm.setString(numAtrib, cn.getNombre());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (cn.getNumeroPreguntas() != 0) {
+                pstm.setInt(numAtrib, cn.getNumeroPreguntas());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (cn.getFechaCreacion() != null) {
+                pstm.setString(numAtrib, cn.getFechaCreacion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+            
+                         
+            if (cn.getAutor().getCodigo()!= 0) {
+                pstm.setInt(numAtrib, cn.getAutor().getCodigo());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+           
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+public void registrarCuestionarioVariaCion(CuestionarioVariacion cn) {
+        String sentencia = "INSERT INTO cuestionario values(?,?,?,?)";
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1; 
+            
+            if (cn.getCodigo() != 0) {
+                pstm.setInt(numAtrib, cn.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (cn.getCuestionarioPadre() != 0) {
+                pstm.setInt(numAtrib, cn.getCuestionarioPadre());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            
+            if (cn.getFechaCreacion() != null) {
+                pstm.setString(numAtrib, cn.getFechaCreacion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+            
+                         
+            if (cn.getAutor().getCodigo()!= 0) {
+                pstm.setInt(numAtrib, cn.getAutor().getCodigo());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+               
+           
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+public void registrarPreguntaPorCuestionario(PreguntaPorCuestionario pc) {
+        String sentencia = "INSERT INTO cuestionario values(?,?,?,?,?)";
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1; 
+            
+            if (pc.getCodigo() != 0) {
+                pstm.setInt(numAtrib, pc.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (pc.getCuestionario() != 0) {
+                pstm.setInt(numAtrib, pc.getCuestionario());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            
+            if (pc.getPregunta() != 0) {
+                pstm.setInt(numAtrib, pc.getPregunta());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+            
+                         
+            if (pc.getPorcentaje()!= 0) {
+                pstm.setDouble(numAtrib, pc.getPorcentaje());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+            
+            if (pc.getIndice()!= 0) {
+                pstm.setInt(numAtrib, pc.getIndice());
+                numAtrib++;
+            } else {
+                  pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+           
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
     /**
      *
      * @param c
