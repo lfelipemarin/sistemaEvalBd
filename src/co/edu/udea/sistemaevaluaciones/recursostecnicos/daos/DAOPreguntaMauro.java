@@ -475,9 +475,9 @@ public class DAOPreguntaMauro {
         return arregloAreas;
     }
 
-	public <Collection>Pregunta listarPreguntas(){
-		return null;
-	}
+//	public <Collection>Pregunta listarPreguntas(){
+//		return null;
+//	}
 
 
 //	/**
@@ -644,85 +644,140 @@ public class DAOPreguntaMauro {
      * @param c
      * @return
      */
-//    public ArrayList<Pregunta> listarPreguntasOr(Pregunta p, String param, ConexionDb c) {
-//
-//        String sentencia = "SELECT * FROM pregunta p WHERE fecha_creacion = ? OR "
-//                + "tipo = ? OR contexto = ? OR grado_dificultad = ? OR habilitado = ?";
-//        //En el modulo 1 segun el prototipo tambien pueden buscar por area del conocimiento 
-//        //por lo que se pide un segundo parametro que sea area de conocimiento
-//        Pregunta preguntaRetorno;
-//        ArrayList<Pregunta> arregloPreguntas = new ArrayList<>();
-//        try {
-//            PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
-//            int numAtrib = 1;
-//
-//            if (p.getFechaCreacion() != null) {
-//                pstm.setDate(numAtrib, p.getFechaCreacion());
-//                numAtrib++;
-//            } else {
-//                pstm.setString(numAtrib, "%");  //al ser fecha no se puede convertira Date a sTRING
-//                numAtrib++;
-//            }
-//
-//            if (p.getTipo() != 0) {
-//                pstm.setInt(numAtrib, p.getTipo());
-//                numAtrib++;
-//            } else {
-//                pstm.setString(numAtrib, "%");
-//                numAtrib++;
-//            }
-//
-//            if (p.getContexto() != 0) {
-//                pstm.setInt(numAtrib, p.getContexto());
-//                numAtrib++;
-//            } else {
-//                pstm.setString(numAtrib, "%");
-//                numAtrib++;
-//            }
-//
-//            if (p.getGradoDificultad() != 0) {
-//                pstm.setInt(numAtrib, p.getGradoDificultad());
-//                numAtrib++;
-//            } else {
-//                pstm.setString(numAtrib, "%");
-//                numAtrib++;
-//            }
-//
-//            if (p.isHabilitado() != false) {
-//                pstm.setInt(numAtrib, p.getGradoDificultad());
-//                numAtrib++;
-//            } else {
-//                pstm.setString(numAtrib, "%");
-//                numAtrib++;
-//            }
-//
-//            System.out.println("consulta :" + pstm);
-//            ResultSet res = pstm.executeQuery();
-//            while (res.next()) {
-//                preguntaRetorno = new Pregunta();
-//                preguntaRetorno.setFecha_creacion(res.getDate("fecha_creacion"));
-//                preguntaRetorno.setTipo(res.getInt("tipo"));
-//                preguntaRetorno.setContexto(res.getInt("contexto"));
-//                preguntaRetorno.setEnunciado(res.getString("enunciado"));
-//                preguntaRetorno.setGradoDificultad(res.getInt("grado_dificultad"));
-//                preguntaRetorno.setHabilitado(res.getBoolean("habilitado"));
-//
-//                arregloPreguntas.add(preguntaRetorno);
-//                //Prueba de impresion en consola............
-//                System.out.println("fecha de creacion: " + res.getString("fecha_creacion"));
-//                System.out.println("Tipo: " + res.getString("tipo"));
-//                System.out.println("Contexto: " + res.getString("contexto"));
-//                System.out.println("Enunciado: " + res.getString("enunciado"));
-//                System.out.println("Grado de Dificultad: " + res.getString("grado_dificultad"));
-//                System.out.println("Estado: " + res.getString("habilitado"));
-//            }
-//            pstm.close();
-//
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return arregloPreguntas;
-//    }
+    public ArrayList<Pregunta> listarPreguntasOr(Pregunta p) {
+
+        String sentencia = "SELECT * FROM pregunta p WHERE codigo = ? OR"
+                + "enunciado = ? OR tipo = ? OR materia = ? OR habilitado = ? OR fecha_creacion = ? OR contexto = ? OR autor = ? OR grado_dificultad = ? OR imagen =? OR nivel_evaluativo =";
+        
+        Pregunta preguntaRetorno;
+        ArrayList<Pregunta> arregloPreguntas = new ArrayList<>();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+            
+            if (p.getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");  
+                numAtrib++;
+            }
+            
+            if (p.getEnunciado()!= null) {
+                pstm.setString(numAtrib, p.getEnunciado());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");  
+                numAtrib++;
+            }
+            
+            if (p.getTipo() != 0) {
+                pstm.setInt(numAtrib, p.getTipo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            if (p.getMateria().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getMateria().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            if (p.isHabilitado() != false) {
+                pstm.setBoolean(numAtrib, p.isHabilitado());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            if (p.getFechaCreacion() != null) {
+                pstm.setString(numAtrib, p.getFechaCreacion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");  //al ser fecha no se puede convertira Date a sTRING
+                numAtrib++;
+            }     
+
+            if (p.getContexto().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getContexto().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+             if (p.getAutor().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getAutor().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+
+            if (p.getGradoDificultad().getCodigo() != 0) {
+                pstm.setInt(numAtrib, p.getGradoDificultad().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            if (p.getImagen() != null) {
+                pstm.setString(numAtrib, p.getImagen());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+            if (p.getNivelEvaluativo().getCodigo() != 0) {
+                pstm.setString(numAtrib, p.getNivelEvaluativo().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "%");
+                numAtrib++;
+            }
+            
+
+            System.out.println("consulta :" + pstm);
+            ResultSet res = pstm.executeQuery();
+            while (res.next()) {
+                preguntaRetorno = new Pregunta();
+                preguntaRetorno.setCodigo(res.getInt("codigo"));
+                preguntaRetorno.setEnunciado(res.getString("enunciado"));
+                preguntaRetorno.setTipo(res.getInt("tipo"));
+                preguntaRetorno.setMateria(getMateriaPorId(res.getInt("materia")));
+                preguntaRetorno.setHabilitado(res.getBoolean("habilitado"));
+                preguntaRetorno.setFechaCreacion(res.getString("fecha_creacion"));
+                preguntaRetorno.setContexto(getContextoPorId(res.getInt("contexto")));
+                preguntaRetorno.setAutor(getUsuarioPorId(res.getInt("autor")));
+                preguntaRetorno.setGradoDificultad(getGradoDeDificultadPorId(res.getInt("grado_dificultad")));
+                preguntaRetorno.setImagen(res.getString("imagen"));
+                preguntaRetorno.setNivelEvaluativo(getNivelEvaluativoPorId(res.getInt("nivel_evaluativo")));
+                
+                
+
+                arregloPreguntas.add(preguntaRetorno);
+                //Prueba de impresion en consola............
+                System.out.println("fecha de creacion: " + res.getString("fecha_creacion"));
+                System.out.println("Tipo: " + res.getString("tipo"));
+                System.out.println("Contexto: " + res.getString("contexto"));
+                System.out.println("Enunciado: " + res.getString("enunciado"));
+                System.out.println("Grado de Dificultad: " + res.getString("grado_dificultad"));
+                System.out.println("Estado: " + res.getString("habilitado"));
+            }
+            pstm.close();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return arregloPreguntas;
+    }
 public Usuario getUsuarioPorId(int id) {
         String sentencia = "SELECT * FROM usuario WHERE codigo = ?";
         Usuario u = new Usuario();
@@ -791,6 +846,156 @@ public AreaDeConocimiento getAreaDeConocimientoPorId(int id) {
                 ac.setNombre(res.getString("descripcion"));
             }
             return ac;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+public Pregunta getPreguntaPorId(int id) {
+        String sentencia = "SELECT * FROM pregunta WHERE codigo = ?";
+        Pregunta p = new Pregunta();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                p.setAutor(getUsuarioPorId(res.getInt("autor")));
+                p.setCodigo(res.getInt("codigo"));
+                p.setContexto(getContextoPorId(res.getInt("contexto")));
+                p.setEnunciado(res.getString("enunciado"));
+                p.setFechaCreacion(res.getString("fecha_creacion"));
+                p.setGradoDificultad(getGradoDeDificultadPorId(res.getInt("grado_dificultad")));
+                p.setHabilitado(res.getBoolean("habilitado"));
+                p.setImagen(res.getString("imagen"));
+                p.setNivelEvaluativo(getNivelEvaluativoPorId(res.getInt("nivel_evaluativo")));
+                p.setTipoPregunta(getTipoPreguntaPorId(res.getInt("tipo")));
+            }
+            return p;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+public Contexto getContextoPorId(int id) {
+        String sentencia = "SELECT * FROM contexto WHERE codigo = ?";
+        Contexto c = new Contexto();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                c.setAutor(getUsuarioPorId(res.getInt("autor")));
+                c.setCodigo(res.getInt("codigo"));
+                c.setEnunciado(res.getString("enunciado"));
+                c.setFechaCreacion(res.getString("fecha_creacion"));
+                c.setImagen(res.getString("imagen"));
+                c.setTitulo(res.getString("titulo"));
+            }
+            return c;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+public GradoDeDificultad getGradoDeDificultadPorId(int id) {
+        String sentencia = "SELECT * FROM grado_dificultad WHERE codigo = ?";
+        GradoDeDificultad gd = new GradoDeDificultad();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                gd.setCodigo(res.getInt("codigo"));
+                gd.setDescripcion(res.getString("descripcion"));
+                gd.setNombre(res.getString("nombre"));
+            }
+            return gd;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+public TipoPregunta getTipoPreguntaPorId(int id) {
+        String sentencia = "SELECT * FROM tipo_pregunta WHERE codigo = ?";
+        TipoPregunta tp = new TipoPregunta();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                tp.setCodigo(res.getInt("codigo"));
+                tp.setTipo(res.getString("tipo"));
+            }
+            return tp;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public NivelEvaluativo getNivelEvaluativoPorId(int id) {
+        String sentencia = "SELECT * FROM nivel_evaluativo WHERE codigo = ?";
+        NivelEvaluativo ne = new NivelEvaluativo();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                ne.setCodigo(res.getInt("codigo"));
+                ne.setNombre(res.getString("nombre"));
+                ne.setDescripcion(res.getString("decripcion"));
+            }
+            return ne;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public Materia getMateriaPorId(int id) {
+        String sentencia = "SELECT * FROM materia WHERE codigo = ?";
+        Materia m = new Materia();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                m.setCodigo(res.getInt("codigo"));
+                m.setNombre(res.getString("nombre"));
+                m.setAreaConocimiento(getAreaDeConocimientoPorId(res.getInt("area_conocimiento")));
+            }
+            return m;
         } catch (Exception e) {
             System.out.println(e);
             return null;
