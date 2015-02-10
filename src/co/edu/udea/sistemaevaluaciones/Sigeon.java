@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemaEvaluaciones;
+package co.edu.udea.sistemaevaluaciones;
 
 import beans.Evaluacion;
 import beans.Grupo;

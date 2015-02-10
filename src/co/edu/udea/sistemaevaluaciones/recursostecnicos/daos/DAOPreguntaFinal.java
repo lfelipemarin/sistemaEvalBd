@@ -33,6 +33,14 @@ public class DAOPreguntaFinal {
 
     }
 
+    /**
+     * Retorna un objeto Grupo dada su identificacion.
+     *
+     * @param a objeto AreaDeConocimiento con algunos o todos sus atributos
+     * establecidos
+     * @return lista con todas las areas de conocimiento que cumplan con los
+     * parametros de busqueda
+     */
     public ArrayList<AreaDeConocimiento> listarAreaDeConocimientos(AreaDeConocimiento a) {
 
         String sentencia = "SELECT * FROM area_conocimiento a WHERE codigo = ? OR"

@@ -28,11 +28,16 @@ import java.sql.ResultSet;
  * @author dx
  */
 public class DAOGetId {
-    
-    public DAOGetId(){
-        
+
+    public DAOGetId() {
     }
-    
+
+    /**
+     * Retorna un objeto Evaluacion dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Evaluacion con TODAS sus propiedades
+     */
     public Evaluacion getEvaluacionPorId(int id) {
         String sentencia = "SELECT * FROM evaluacion WHERE codigo = ?";
         Evaluacion e = new Evaluacion();
@@ -59,6 +64,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Prueba dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Prueba con TODAS sus propiedades
+     */
     public Prueba getPruebaPorId(int id) {
         String sentencia = "SELECT * FROM prueba WHERE codigo = ?";
         Prueba p = new Prueba();
@@ -87,6 +98,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Cuestionario dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Cuestionario con TODAS sus propiedades
+     */
     public Cuestionario getCuestionarioPorId(int id) {
         String sentencia = "SELECT * FROM cuestionario WHERE codigo = ?";
         Cuestionario c = new Cuestionario();
@@ -113,6 +130,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Grupo dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Grupo con TODAS sus propiedades
+     */
     public Grupo getGrupoPorId(int id) {
         String sentencia = "SELECT * FROM grupo WHERE codigo = ?";
         Grupo g = new Grupo();
@@ -138,6 +161,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Respuesta dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Respuesta con TODAS sus propiedades
+     */
     public Respuesta getRespuestaPorId(int id) {
         String sentencia = "SELECT * FROM respuesta WHERE codigo = ?";
         Respuesta r = new Respuesta();
@@ -164,6 +193,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Pregunta dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Pregunta con TODAS sus propiedades
+     */
     public Pregunta getPreguntaPorId(int id) {
         String sentencia = "SELECT * FROM pregunta WHERE codigo = ?";
         Pregunta p = new Pregunta();
@@ -195,6 +230,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Materia dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Materia con TODAS sus propiedades
+     */
     public Materia getMateriaPorId(int id) {
         String sentencia = "SELECT * FROM materia WHERE codigo = ?";
         Materia m = new Materia();
@@ -219,6 +260,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto AreaDeConocimiento dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto AreaDeConocimiento con TODAS sus propiedades
+     */
     public AreaDeConocimiento getAreaDeConocimientoPorId(int id) {
         String sentencia = "SELECT * FROM area_conocimiento WHERE codigo = ?";
         AreaDeConocimiento ac = new AreaDeConocimiento();
@@ -243,6 +290,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Contexto dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Contexto con TODAS sus propiedades
+     */
     public Contexto getContextoPorId(int id) {
         String sentencia = "SELECT * FROM contexto WHERE codigo = ?";
         Contexto c = new Contexto();
@@ -270,6 +323,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto NivelEvaluativo dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto NivelEvaluativo con TODAS sus propiedades
+     */
     public NivelEvaluativo getNivelEvaluativoPorId(int id) {
         String sentencia = "SELECT * FROM nivel_evaluativo WHERE codigo = ?";
         NivelEvaluativo ne = new NivelEvaluativo();
@@ -294,6 +353,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto GradeDeDificultad dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto GradeDeDificultad con TODAS sus propiedades
+     */
     public GradoDeDificultad getGradoDeDificultadPorId(int id) {
         String sentencia = "SELECT * FROM grado_dificultad WHERE codigo = ?";
         GradoDeDificultad gd = new GradoDeDificultad();
@@ -318,6 +383,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto TipoPregunta dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto TipoPregunta con TODAS sus propiedades
+     */
     public TipoPregunta getTipoPreguntaPorId(int id) {
         String sentencia = "SELECT * FROM tipo_pregunta WHERE codigo = ?";
         TipoPregunta tp = new TipoPregunta();
@@ -341,6 +412,12 @@ public class DAOGetId {
         }
     }
 
+    /**
+     * Retorna un objeto Rol dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Rol con TODAS sus propiedades
+     */
     public Rol getRolPorId(int id) {
         String sentencia = "SELECT * FROM rol WHERE codigo = ?";
         Rol rol = new Rol();
@@ -365,6 +442,12 @@ public class DAOGetId {
 
     }
 
+    /**
+     * Retorna un objeto Usuario dada su identificacion.
+     *
+     * @param id el numero de identificacion de la Evaluacion
+     * @return objeto Usuario con TODAS sus propiedades
+     */
     public Usuario getUsuarioPorId(int id) {
         String sentencia = "SELECT * FROM usuario WHERE codigo = ?";
         Usuario u = new Usuario();
@@ -390,5 +473,5 @@ public class DAOGetId {
             return null;
         }
     }
-    
+
 }
