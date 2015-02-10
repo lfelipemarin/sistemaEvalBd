@@ -63,6 +63,37 @@ public class DAOPreguntaMauro {
         }
     }
     
+    public void registrarAreaConocimientoDePregunta(AreaDeConocimiento ac, Pregunta p) {
+        String sentencia = "INSERT INTO area_conocimiento_x_pregunta values(?,?)";
+
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            if (ac.getCodigo() != 0) {
+                pstm.setInt(numAtrib, ac.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (p.getCodigo() != 0) {
+                pstm.setString(numAtrib, ac.getNombre());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public void registrarPregunta(Pregunta p) {
         String sentencia = "INSERT INTO pregunta values(?,?,?,?,?,?,?,?,?,?,?)";
 
