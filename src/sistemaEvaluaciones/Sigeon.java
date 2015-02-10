@@ -5,6 +5,7 @@
  */
 package sistemaEvaluaciones;
 
+import beans.AreaDeConocimiento;
 import beans.Pregunta;
 import beans.Respuesta;
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.daos.DAOPreguntaMauro;
@@ -79,18 +80,23 @@ public class Sigeon {
 //        DAOPreguntaMauro daopm = new DAOPreguntaMauro();
 ////        daopm.registrarContexto(c);
 //        daopm.buscarContextoOR(c);
-        
-        Respuesta r = new Respuesta();
-        r.setCodigo(1);
-        r.setCorrecta(true);
-        r.setImagen(null);
-        Pregunta p = new Pregunta();
-        p.setCodigo(1);
-        r.setPregunta(p);
-        r.setTexto("texto rta 1 preg 1");
+//        Respuesta r = new Respuesta();
+//        r.setCodigo(1);
+//        r.setCorrecta(true);
+//        r.setImagen(null);
+//        Pregunta p = new Pregunta();
+//        p.setCodigo(1);
+//        r.setPregunta(p);
+//        r.setTexto("texto rta 1 preg 1");
+        AreaDeConocimiento ac = new AreaDeConocimiento();
+        AreaDeConocimiento ac1 = new AreaDeConocimiento();
+        ac1.setCodigo(1);
+        ac.setCodigo(3);
+        ac.setDescripcion("desc ac tres");
+        ac.setNombre("nom ac tres");
+//        ac.setAreaPadre(ac1);
         DAOPreguntaMauro daopm = new DAOPreguntaMauro();
-        daopm.registrarRespuesta(r);
-
+        daopm.registrarAreaConocimiento(ac);
 
     }
 

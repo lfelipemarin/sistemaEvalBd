@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import co.edu.udea.sistemaevaluaciones.recursostecnicos.dbutil.ConexionDb;
 import java.sql.ResultSet;
 import beans.*;
-import java.util.ArrayList;
 
 /**
  * @author FelipeWin
@@ -16,8 +15,55 @@ public class DAOPreguntaMauro {
     public DAOPreguntaMauro() {
 
     }
-    
-    public void registrarRespuesta(Respuesta r){
+
+    public void registrarAreaConocimiento(AreaDeConocimiento ac) {
+        String sentencia = "INSERT INTO area_conocimiento values(?,?,?,?)";
+
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            if (ac.getCodigo() != 0) {
+                pstm.setInt(numAtrib, ac.getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (ac.getNombre() != null) {
+                pstm.setString(numAtrib, ac.getNombre());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (ac.getDescripcion() != null) {
+                pstm.setString(numAtrib, ac.getDescripcion());
+                numAtrib++;
+            } else {
+                pstm.setString(numAtrib, "");
+                numAtrib++;
+            }
+
+            if (ac.getAreaPadre() != null) {
+                pstm.setInt(numAtrib, ac.getAreaPadre().getCodigo());
+                numAtrib++;
+            } else {
+                pstm.setNull(numAtrib, java.sql.Types.NULL);
+                numAtrib++;
+            }
+
+            System.out.println("consulta :" + pstm);
+            pstm.execute();
+            pstm.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void registrarRespuesta(Respuesta r) {
         String sentencia = "INSERT INTO respuesta values(?,?,?,?,?)";
         try {
             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
@@ -38,15 +84,15 @@ public class DAOPreguntaMauro {
                 pstm.setString(numAtrib, "");
                 numAtrib++;
             }
-            
+
             if (r.isCorrecta()) {
                 pstm.setBoolean(numAtrib, r.isCorrecta());
                 numAtrib++;
             } else {
                 pstm.setBoolean(numAtrib, r.isCorrecta());
                 numAtrib++;
-            }            
-            
+            }
+
             if (r.getPregunta() != null) {
                 pstm.setInt(numAtrib, r.getPregunta().getCodigo());
                 numAtrib++;
@@ -137,7 +183,7 @@ public class DAOPreguntaMauro {
     /**
      *
      * @param c
-     * @return 
+     * @return
      */
     public Contexto buscarContextoOR(Contexto c) {
         String sentencia = "SELECT * FROM contexto c WHERE codigo = ? OR "
@@ -217,57 +263,57 @@ public class DAOPreguntaMauro {
 //	 * 
 //	 * @param area
 //	 */
-    public void guardarAreaDeConocimiento(AreaDeConocimiento area, ConexionDb conn) {
-        String sentencia = "INSERT INTO `area_conocimiento` (`codigo`, `nombre`, `descripcion`, `area_padre` ) VALUES (?,?,?,?)";
-        int cod_area = area.getCodigo();
-        String nombre = area.getNombre();
-        String descripcion = area.getDescripcion();
-        int area_padre = area.getArea_padre();
-        try {
-
-            PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);
-
-            pstm.setInt(1, cod_area);
-            pstm.setString(2, nombre);
-            pstm.setString(3, descripcion);
-            pstm.setInt(4, area_padre);
-
-            System.out.println("consulta :" + pstm);
-            pstm.execute();
-            pstm.close();
-            System.out.println("error2 :" + pstm);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-    }
-
-    /**
-     *
-     * @param area
-     * @param pregunta
-     * @param conn
-     */
-    public void guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta, ConexionDb conn) {
-        String sentencia = "INSERT INTO `area_conocimiento_x_pregunta` (`area_conocimiento`, `pregunta`) VALUES (?,?)";
-        int cod_area = area.getCodigo();
-        int cod_pregunta = pregunta.getCodigo();
-        try {
-
-            PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);
-
-            pstm.setInt(1, cod_area);
-            pstm.setInt(2, cod_pregunta);
-
-            System.out.println("consulta :" + pstm);
-            pstm.execute();
-            pstm.close();
-            System.out.println("error2 :" + pstm);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-
-    }
+//    public void guardarAreaDeConocimiento(AreaDeConocimiento area, ConexionDb conn) {
+//        String sentencia = "INSERT INTO `area_conocimiento` (`codigo`, `nombre`, `descripcion`, `area_padre` ) VALUES (?,?,?,?)";
+//        int cod_area = area.getCodigo();
+//        String nombre = area.getNombre();
+//        String descripcion = area.getDescripcion();
+//        int area_padre = area.getAreaPadre();
+//        try {
+//
+//            PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);
+//
+//            pstm.setInt(1, cod_area);
+//            pstm.setString(2, nombre);
+//            pstm.setString(3, descripcion);
+//            pstm.setInt(4, area_padre);
+//
+//            System.out.println("consulta :" + pstm);
+//            pstm.execute();
+//            pstm.close();
+//            System.out.println("error2 :" + pstm);
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//
+//    }
+//
+//    /**
+//     *
+//     * @param area
+//     * @param pregunta
+//     * @param conn
+//     */
+//    public void guardarAreaDeConocimientoDePregunta(AreaDeConocimiento area, Pregunta pregunta, ConexionDb conn) {
+//        String sentencia = "INSERT INTO `area_conocimiento_x_pregunta` (`area_conocimiento`, `pregunta`) VALUES (?,?)";
+//        int cod_area = area.getCodigo();
+//        int cod_pregunta = pregunta.getCodigo();
+//        try {
+//
+//            PreparedStatement pstm = conn.getConnection().prepareStatement(sentencia);
+//
+//            pstm.setInt(1, cod_area);
+//            pstm.setInt(2, cod_pregunta);
+//
+//            System.out.println("consulta :" + pstm);
+//            pstm.execute();
+//            pstm.close();
+//            System.out.println("error2 :" + pstm);
+//        } catch (SQLException e) {
+//            System.out.println(e);
+//        }
+//
+//    }
 //
 //	/**
 //	 * 
@@ -325,41 +371,39 @@ public class DAOPreguntaMauro {
 //         System.out.println(e);
 //      }
 //   }
-
-public ArrayList<AreaDeConocimiento> listarAreaDeConocimientos(AreaDeConocimiento a, ConexionDb c){
-		
-	     String sentencia = "SELECT * FROM area_conocimiento a";
-              AreaDeConocimiento areasRetorno;
-              ArrayList<AreaDeConocimiento> arregloAreas = new ArrayList<>();
-        try {
-            PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
-            int numAtrib = 1;
-
-            
-            System.out.println("consulta :" + pstm);
-            ResultSet res = pstm.executeQuery();
-            while (res.next()) {
-               areasRetorno = new AreaDeConocimiento();
-               
-               areasRetorno.setCodigo(res.getInt("codigo"));
-               areasRetorno.setNombre(res.getString("nombre"));
-               areasRetorno.setDescripcion(res.getString("descripcion"));
-               areasRetorno.setArea_padre(res.getInt("area_padre"));
-               
-               arregloAreas.add(areasRetorno);
-            //Prueba de impresion en consola............
-                System.out.println("codigo: " + res.getInt("codigo"));
-                System.out.println("nombre: " + res.getString("nombre"));
-                System.out.println("Descripcio: " + res.getString("descripcion"));
-                System.out.println("Area padre: " + res.getInt("area_padre"));
-            }
-            pstm.close();
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-            return arregloAreas;
-        }
+//    public ArrayList<AreaDeConocimiento> listarAreaDeConocimientos(AreaDeConocimiento a, ConexionDb c) {
+//
+//        String sentencia = "SELECT * FROM area_conocimiento a";
+//        AreaDeConocimiento areasRetorno;
+//        ArrayList<AreaDeConocimiento> arregloAreas = new ArrayList<>();
+//        try {
+//            PreparedStatement pstm = c.getConnection().prepareStatement(sentencia);
+//            int numAtrib = 1;
+//
+//            System.out.println("consulta :" + pstm);
+//            ResultSet res = pstm.executeQuery();
+//            while (res.next()) {
+//                areasRetorno = new AreaDeConocimiento();
+//
+//                areasRetorno.setCodigo(res.getInt("codigo"));
+//                areasRetorno.setNombre(res.getString("nombre"));
+//                areasRetorno.setDescripcion(res.getString("descripcion"));
+//                areasRetorno.setAreaPadre(res.getInt("area_padre"));
+//
+//                arregloAreas.add(areasRetorno);
+//                //Prueba de impresion en consola............
+//                System.out.println("codigo: " + res.getInt("codigo"));
+//                System.out.println("nombre: " + res.getString("nombre"));
+//                System.out.println("Descripcio: " + res.getString("descripcion"));
+//                System.out.println("Area padre: " + res.getInt("area_padre"));
+//            }
+//            pstm.close();
+//
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
+//        return arregloAreas;
+//    }
 
 //	public <Collection>Pregunta listarPreguntas(){
 //		return null;
@@ -377,7 +421,7 @@ public ArrayList<AreaDeConocimiento> listarAreaDeConocimientos(AreaDeConocimient
      * @param p
      * @param param
      * @param c
-     * @return 
+     * @return
      */
 //    public ArrayList<Pregunta> listarPreguntasOr(Pregunta p, String param, ConexionDb c) {
 //

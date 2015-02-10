@@ -11,11 +11,11 @@ package beans;
  */
 public class AreaDeConocimiento {
 
-    int codigo;
-    String nombre;
-    String descripcion;
-    int area_padre;
-    
+    private int codigo;
+    private String nombre;
+    private String descripcion;
+    private AreaDeConocimiento areaPadre;
+
     public int getCodigo() {
         return codigo;
     }
@@ -40,13 +40,12 @@ public class AreaDeConocimiento {
         this.descripcion = descripcion;
     }
 
-    public int getArea_padre() {
-        return area_padre;
+    public AreaDeConocimiento getAreaPadre() {
+        return areaPadre;
     }
 
-    public void setArea_padre(int area_padre) {
-        this.area_padre = area_padre;
+    public void setAreaPadre(AreaDeConocimiento area_padre) {
+        this.areaPadre = area_padre;
     }
-    
-    
+
 }
