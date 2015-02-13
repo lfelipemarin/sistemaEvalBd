@@ -11,28 +11,38 @@ package beans;
  */
 public class AreaDeConocimientoDePregunta {
 
-    
-    int area_conocimiento;
-    int pregunta;
+    private AreaDeConocimiento area_conocimiento;
+    private Pregunta pregunta;
 
-    
+    public AreaDeConocimientoDePregunta() {
 
-    public int getArea_conocimiento() {
+    }
+
+    /**
+     * @return the area_conocimiento
+     */
+    public AreaDeConocimiento getArea_conocimiento() {
         return area_conocimiento;
     }
 
-    public void setArea_conocimiento(int area_conocimiento) {
+    /**
+     * @param area_conocimiento the area_conocimiento to set
+     */
+    public void setArea_conocimiento(AreaDeConocimiento area_conocimiento) {
         this.area_conocimiento = area_conocimiento;
     }
 
-    public int getPregunta() {
+    /**
+     * @return the pregunta
+     */
+    public Pregunta getPregunta() {
         return pregunta;
     }
 
-    public void setPregunta(int pregunta) {
+    /**
+     * @param pregunta the pregunta to set
+     */
+    public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
     }
-    
-    
-    
 }

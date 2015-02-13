@@ -11,8 +11,8 @@ package beans;
  */
 public class Rol {
 
-    int codigo;
-    String nombre;
+    private int codigo;
+    private String nombre;
 
     public int getCodigo() {
         return codigo;

@@ -11,31 +11,53 @@ package beans;
  */
 public class RespuestaEstudiante {
 
-    int codigo;
-    int evaluacion;
-    int respuesta;
+    private int codigo;
+    private Evaluacion evaluacion;
+    private Respuesta respuesta;
 
+    public RespuestaEstudiante() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public int getEvaluacion() {
+    /**
+     * @return the evaluacion
+     */
+    public Evaluacion getEvaluacion() {
         return evaluacion;
     }
 
-    public void setEvaluacion(int evaluacion) {
+    /**
+     * @param evaluacion the evaluacion to set
+     */
+    public void setEvaluacion(Evaluacion evaluacion) {
         this.evaluacion = evaluacion;
     }
 
-    public int getRespuesta() {
+    /**
+     * @return the respuesta
+     */
+    public Respuesta getRespuesta() {
         return respuesta;
     }
 
-    public void setRespuesta(int respuesta) {
+    /**
+     * @param respuesta the respuesta to set
+     */
+    public void setRespuesta(Respuesta respuesta) {
         this.respuesta = respuesta;
     }
 }

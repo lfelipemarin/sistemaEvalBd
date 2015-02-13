@@ -11,8 +11,8 @@ package beans;
  */
 public class GradoDeDificultad {
 
-    int codigo;
-    String nombre;
+    private int codigo;
+    private String nombre;
 
     public String getDescripcion() {
         return descripcion;

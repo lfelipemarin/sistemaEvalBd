@@ -11,33 +11,53 @@ package beans;
  */
 public class EstudiantePorGrupo {
 
-    int codigo;
-    int estudiante;
-    int grupo;
-    
+    private int codigo;
+    private Usuario estudiante;
+    private Grupo grupo;
+
+    public EstudiantePorGrupo() {
+
+    }
+
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public int getEstudiante() {
+    /**
+     * @return the estudiante
+     */
+    public Usuario getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(int estudiante) {
+    /**
+     * @param estudiante the estudiante to set
+     */
+    public void setEstudiante(Usuario estudiante) {
         this.estudiante = estudiante;
     }
 
-    public int getGrupo() {
+    /**
+     * @return the grupo
+     */
+    public Grupo getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(int grupo) {
+    /**
+     * @param grupo the grupo to set
+     */
+    public void setGrupo(Grupo grupo) {
         this.grupo = grupo;
     }
-    
-    
 }
