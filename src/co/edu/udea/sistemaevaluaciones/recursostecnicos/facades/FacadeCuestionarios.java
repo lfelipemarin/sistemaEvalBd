@@ -13,6 +13,15 @@ import java.util.ArrayList;
  */
 public class FacadeCuestionarios {
 
+    public FacadeCuestionarios() {
+
+    }
+
+    public CuestionarioVariacion getUltimaVariacionCuestionario(Cuestionario c) {
+        DAOPreguntaFinal dAOPreguntaFinal = new DAOPreguntaFinal();
+        return dAOPreguntaFinal.getUltimaVariacionCuestionario(c);
+    }
+
     /**
      *
      * @param cuestionario

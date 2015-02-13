@@ -26,11 +26,67 @@ import java.util.ArrayList;
  */
 public class DAOPreguntaFinal {
 
-    private DAOGetId dAOGetId;
+    private final DAOGetId dAOGetId;
 
     public DAOPreguntaFinal() {
         this.dAOGetId = new DAOGetId();
 
+    }
+    
+    public Pregunta getUltimaPreguntaCuestionario(Cuestionario c){
+        String sentencia = "SELECT p.codigo FROM pregunta p, "
+                + "pregunta_x_cuestionario pc WHERE pc.codigo = ? "
+                + "order by p.fecha_creacion ASC limit 0,1";
+        Pregunta p = new Pregunta();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                p = dAOGetId.getPreguntaPorId(res.getInt("codigo"));
+                break;
+            }
+            pstm.close();
+            return p;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    /**
+     * Retorna el ultimo objeto CuestionarioVariacion creado dado su
+     * cuestionario padre.
+     *
+     * @param c objeto Cuestionario con su atributo codigo establecido.
+     * @return objeto CuestionarioVariacion con fecha de creacion mas reciente
+     */
+    public CuestionarioVariacion getUltimaVariacionCuestionario(Cuestionario c) {
+        String sentencia = "SELECT * FROM cuestionario_variacion WHERE "
+                + "cuestionario_padre= ? order by fecha_creacion ASC limit 0,1";
+        CuestionarioVariacion cv = new CuestionarioVariacion();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            int numAtrib = 1;
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                cv = dAOGetId.getCuestionarioVariacionPorId(res.getInt("codigo"));
+                break;
+            }
+            pstm.close();
+            return cv;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     /**

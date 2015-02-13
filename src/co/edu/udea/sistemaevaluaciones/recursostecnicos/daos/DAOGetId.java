@@ -8,6 +8,7 @@ package co.edu.udea.sistemaevaluaciones.recursostecnicos.daos;
 import beans.AreaDeConocimiento;
 import beans.Contexto;
 import beans.Cuestionario;
+import beans.CuestionarioVariacion;
 import beans.Evaluacion;
 import beans.GradoDeDificultad;
 import beans.Grupo;
@@ -468,6 +469,31 @@ public class DAOGetId {
                 u.setRol(getRolPorId(res.getInt("rol")));
             }
             return u;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public CuestionarioVariacion getCuestionarioVariacionPorId(int id) {
+        String sentencia = "SELECT * FROM cuestionario_variacion WHERE codigo = ?";
+        CuestionarioVariacion cv = new CuestionarioVariacion();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+
+            pstm.setInt(1, id);
+
+            System.out.println("consulta :" + pstm);
+
+            ResultSet res = pstm.executeQuery();
+
+            while (res.next()) {
+                cv.setCodigo(res.getInt("codigo"));
+                cv.setAutor(getUsuarioPorId(res.getInt("autor")));
+                cv.setCuestionarioPadre(getCuestionarioPorId(res.getInt("cuestionario_padre")));
+                cv.setFechaCreacion(res.getString("fecha_creacion"));
+            }
+            return cv;
         } catch (Exception e) {
             System.out.println(e);
             return null;
