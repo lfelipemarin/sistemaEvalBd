@@ -5,8 +5,6 @@
  */
 package beans;
 
-import java.sql.Date;
-
 /**
  *
  * @author eaagudelr

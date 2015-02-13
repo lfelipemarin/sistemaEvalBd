@@ -32,8 +32,28 @@ public class DAOPreguntaFinal {
         this.dAOGetId = new DAOGetId();
 
     }
-    
-    public Pregunta getUltimaPreguntaCuestionario(Cuestionario c){
+
+    public ArrayList<CuestionarioVariacion> getVariacionesCuestionario(Cuestionario c) {
+        String sentencia = "SELECT codigo FROM cuestionario_variacion WHERE "
+                + "cuestionario_padre = ?";
+        ArrayList<CuestionarioVariacion> variaciones = new ArrayList<>();
+        try {
+            PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
+            pstm.setInt(1, c.getCodigo());
+            System.out.println("consulta :" + pstm);
+            ResultSet res = pstm.executeQuery();
+            while (res.next()) {
+                variaciones.add(dAOGetId.getCuestionarioVariacionPorId(res.getInt("codigo")));
+            }
+            pstm.close();
+            return variaciones;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return null;
+        }
+    }
+
+    public Pregunta getUltimaPreguntaCuestionario(Cuestionario c) {
         String sentencia = "SELECT p.codigo FROM pregunta p, "
                 + "pregunta_x_cuestionario pc WHERE pc.codigo = ? "
                 + "order by p.fecha_creacion ASC limit 0,1";
@@ -164,7 +184,7 @@ public class DAOPreguntaFinal {
         return arregloAreas;
     }
 
-    public void registrarCuestionarioVariaCion(CuestionarioVariacion cn) {
+    public void registrarCuestionarioVariacion(CuestionarioVariacion cn) {
         String sentencia = "INSERT INTO cuestionario values(?,?,?,?)";
         try {
             PreparedStatement pstm = ConexionDb.getInstancia().getConnection().prepareStatement(sentencia);
@@ -224,16 +244,16 @@ public class DAOPreguntaFinal {
                 numAtrib++;
             }
 
-            if (pc.getCuestionario() != 0) {
-                pstm.setInt(numAtrib, pc.getCuestionario());
+            if (pc.getCuestionario().getCodigo() != 0) {
+                pstm.setInt(numAtrib, pc.getCuestionario().getCodigo());
                 numAtrib++;
             } else {
                 pstm.setString(numAtrib, "");
                 numAtrib++;
             }
 
-            if (pc.getPregunta() != 0) {
-                pstm.setInt(numAtrib, pc.getPregunta());
+            if (pc.getPregunta().getCodigo() != 0) {
+                pstm.setInt(numAtrib, pc.getPregunta().getCodigo());
                 numAtrib++;
             } else {
                 pstm.setString(numAtrib, "");
@@ -248,8 +268,8 @@ public class DAOPreguntaFinal {
                 numAtrib++;
             }
 
-            if (pc.getIndice() != 0) {
-                pstm.setInt(numAtrib, pc.getIndice());
+            if (pc.getPosicionPregunta() != 0) {
+                pstm.setInt(numAtrib, pc.getPosicionPregunta());
                 numAtrib++;
             } else {
                 pstm.setString(numAtrib, "");

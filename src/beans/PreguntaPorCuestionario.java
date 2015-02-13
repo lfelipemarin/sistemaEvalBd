@@ -11,50 +11,83 @@ package beans;
  */
 public class PreguntaPorCuestionario {
 
-    int codigo;
-    int cuestionario;
-    int pregunta;
-    double porcentaje;
-    int indice;
+    private int codigo;
+    private Cuestionario cuestionario;
+    private Pregunta pregunta;
+    private double porcentaje;
+    private int posicionPregunta;
+    
+    public PreguntaPorCuestionario(){
+        
+    }
 
+    /**
+     * @return the codigo
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * @param codigo the codigo to set
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
-    public int getCuestionario() {
+    /**
+     * @return the cuestionario
+     */
+    public Cuestionario getCuestionario() {
         return cuestionario;
     }
 
-    public void setCuestionario(int cuestionario) {
+    /**
+     * @param cuestionario the cuestionario to set
+     */
+    public void setCuestionario(Cuestionario cuestionario) {
         this.cuestionario = cuestionario;
     }
 
-    public int getPregunta() {
+    /**
+     * @return the pregunta
+     */
+    public Pregunta getPregunta() {
         return pregunta;
     }
 
-    public void setPregunta(int pregunta) {
+    /**
+     * @param pregunta the pregunta to set
+     */
+    public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
     }
 
+    /**
+     * @return the porcentaje
+     */
     public double getPorcentaje() {
         return porcentaje;
     }
 
+    /**
+     * @param porcentaje the porcentaje to set
+     */
     public void setPorcentaje(double porcentaje) {
         this.porcentaje = porcentaje;
     }
 
-    public int getIndice() {
-        return indice;
+    /**
+     * @return the posicionPregunta
+     */
+    public int getPosicionPregunta() {
+        return posicionPregunta;
     }
 
-    public void setIndice(int indice) {
-        this.indice = indice;
+    /**
+     * @param posicionPregunta the posicionPregunta to set
+     */
+    public void setPosicionPregunta(int posicionPregunta) {
+        this.posicionPregunta = posicionPregunta;
     }
-    
 }

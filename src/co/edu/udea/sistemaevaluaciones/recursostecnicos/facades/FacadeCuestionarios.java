@@ -17,6 +17,25 @@ public class FacadeCuestionarios {
 
     }
 
+    public ArrayList<CuestionarioVariacion> listarVariaciones(Cuestionario c) {
+        DAOPreguntaFinal dAOPreguntaFinal = new DAOPreguntaFinal();
+        return dAOPreguntaFinal.getVariacionesCuestionario(c);
+    }
+
+    public void actualizarCuestionario(Cuestionario c) {
+        //no implementado aún; que parametros necesitan modificar?
+    }
+
+    public void guardarPreguntaCuestionario(PreguntaPorCuestionario pc) {
+        DAOPreguntaFinal dAOPreguntaFinal = new DAOPreguntaFinal();
+        dAOPreguntaFinal.registrarPreguntaPorCuestionario(pc);
+    }
+
+    public void guardarVariacionCuestionario(CuestionarioVariacion cv) {
+        DAOPreguntaFinal dAOPreguntaFinal = new DAOPreguntaFinal();
+        dAOPreguntaFinal.registrarCuestionarioVariacion(cv);
+    }
+
     public CuestionarioVariacion getUltimaVariacionCuestionario(Cuestionario c) {
         DAOPreguntaFinal dAOPreguntaFinal = new DAOPreguntaFinal();
         return dAOPreguntaFinal.getUltimaVariacionCuestionario(c);
